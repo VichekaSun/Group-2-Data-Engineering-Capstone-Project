@@ -43,7 +43,9 @@ services:
       SNOWFLAKE_DATABASE: ${SNOWFLAKE_DATABASE}
       SNOWFLAKE_ROLE: ${SNOWFLAKE_ROLE}
     volumes:
-      - ./dags:/opt/airflow/dags
+      - ./dag:/opt/airflow/dags
+      - ./data:/opt/airflow/data
+      - ./src:/opt/airflow/src
       - airflow_data:/opt/airflow
 
 volumes:
