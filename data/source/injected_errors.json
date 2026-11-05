@@ -1,0 +1,33 @@
+{
+  "seed": 42,
+  "note": "All data is synthetic. Counts are errors deliberately injected.",
+  "employees": {
+    "total_rows_written": 206,
+    "inconsistent_department_labels": 24,
+    "missing_department": 5,
+    "missing_job_title": 4,
+    "job_title_casing_issues": 8,
+    "future_hire_date": 3,
+    "non_iso_hire_date_format": 10,
+    "duplicate_employee_id_rows": 6
+  },
+  "attendance": {
+    "total_rows_written": 13040,
+    "invalid_status_values": 40,
+    "orphan_employee_ids": 30,
+    "check_out_before_check_in": 25,
+    "missing_check_in_on_worked_day": 30,
+    "impossible_dates": 10,
+    "non_iso_date_format": 50,
+    "hours_worked_out_of_range": 12,
+    "exact_duplicate_rows": 40
+  },
+  "performance": {
+    "total_rows_written": 410,
+    "score_out_of_range": 12,
+    "missing_score": 8,
+    "orphan_employee_ids": 8,
+    "inconsistent_status_casing": 15,
+    "exact_duplicate_rows": 10
+  }
+}
