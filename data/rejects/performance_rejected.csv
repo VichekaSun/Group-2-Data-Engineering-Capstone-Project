@@ -1,0 +1,10 @@
+employee_id,review_period,review_date,score,reviewer_status,reject_reason
+E0032,2025-H2,2025-12-08,,Approved,missing score
+E0074,2025-H2,2025-12-14,,Approved,missing score
+E0065,2025-H2,2025-12-13,,Approved,missing score
+E0070,2026-H1,2026-06-07,,Approved,missing score
+E0074,2025-H2,2025-12-14,,Approved,missing score
+E0099,2025-H2,2025-12-12,,Approved,missing score
+E0137,2025-H2,2025-12-07,,Draft,missing score
+E0152,2026-H1,2026-06-19,,Draft,missing score
+E0162,2026-H1,2026-06-07,,Approved,missing score
