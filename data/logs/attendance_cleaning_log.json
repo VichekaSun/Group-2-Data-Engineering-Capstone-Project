@@ -1,0 +1,12 @@
+{
+  "rows_in": 13040,
+  "identical_duplicates_dropped": 40,
+  "date_format_fixed": 50,
+  "impossible_date_rows_rejected": 10,
+  "status_labels_fixed": 34,
+  "invalid_status_rows_rejected": 6,
+  "hours_outside_0_24_rejected": 12,
+  "check_out_before_check_in_rejected": 25,
+  "missing_check_in_kept": 32,
+  "rows_out": 12947
+}
