@@ -1,0 +1,15 @@
+{
+  "rows_in": 206,
+  "identical_duplicates_dropped": 3,
+  "conflicting_id_rows_rejected": 3,
+  "missing_department_filled": 5,
+  "missing_job_title_filled": 4,
+  "department_labels_fixed": 24,
+  "unmatched_department_rows_rejected": 0,
+  "job_title_casing_fixed": 8,
+  "job_title_casing_unresolved": 0,
+  "hire_date_format_fixed": 10,
+  "unreadable_hire_date_blanked": 0,
+  "future_hire_date_blanked": 3,
+  "rows_out": 200
+}

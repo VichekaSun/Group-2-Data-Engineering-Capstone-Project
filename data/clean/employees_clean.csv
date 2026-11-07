@@ -1,0 +1,201 @@
+employee_id,department,division,job_title,hire_date,employment_status,salary_band
+E0001,Operations,Operations,Operations Officer,2026-04-26,Active,B2
+E0002,Finance,Corporate Services,Accountant,2025-08-03,Active,B1
+E0003,Operations,Operations,Operations Officer,2018-05-03,Active,B2
+E0024,Marketing,Commercial,Content Creator,2018-02-17,Active,B1
+E0004,Marketing,Commercial,Marketing Executive,2024-04-17,Active,B4
+E0005,IT,Technology,IT Support,2018-01-27,Active,B2
+E0006,Operations,Operations,Operations Manager,2021-02-12,Active,B3
+E0007,Finance,Corporate Services,Finance Analyst,2019-02-01,Active,B3
+E0008,Operations,Operations,Operations Officer,2026-03-08,Active,B1
+E0009,Customer Service,Operations,Team Leader,2018-11-19,Active,B3
+E0010,Operations,Operations,Logistics Coordinator,2018-10-12,Active,B2
+E0011,Sales,Commercial,Sales Executive,2020-08-11,Active,B4
+E0012,IT,Technology,IT Support,2019-10-29,Active,B2
+E0013,Operations,Operations,Logistics Coordinator,2025-08-31,Active,B2
+E0014,Marketing,Commercial,Marketing Executive,2019-11-01,Active,B3
+E0015,Customer Service,Operations,Support Specialist,2025-09-19,Active,B3
+E0016,Sales,Commercial,Sales Executive,2020-07-27,Active,B3
+E0017,IT,Technology,Software Engineer,2020-05-14,On Leave,B3
+E0018,IT,Technology,IT Manager,2022-06-09,On Leave,B4
+E0019,Finance,Corporate Services,Accountant,2020-10-07,Active,B3
+E0020,Sales,Commercial,Sales Manager,2024-07-18,Active,B2
+E0021,Customer Service,Operations,Customer Service Agent,2023-09-19,Active,B1
+E0022,Sales,Commercial,Sales Executive,2025-01-14,Active,B4
+E0023,Operations,Operations,Operations Manager,2022-04-13,Active,B4
+E0025,Operations,Operations,Logistics Coordinator,2026-06-03,Active,B3
+E0026,Finance,Corporate Services,Finance Analyst,2019-10-10,Active,B3
+E0027,Customer Service,Operations,Customer Service Agent,2023-09-11,On Leave,B3
+E0028,Sales,Commercial,Account Officer,2024-10-30,Active,B3
+E0029,Sales,Commercial,Account Officer,2023-12-13,On Leave,B3
+E0030,Marketing,Commercial,Marketing Executive,2022-01-26,Active,B3
+E0067,Operations,Operations,Logistics Coordinator,2019-10-24,Active,B4
+E0031,IT,Technology,Data Analyst,2024-05-12,Resigned,B1
+E0032,Sales,Commercial,Sales Executive,2026-07-13,Active,B2
+E0033,Finance,Corporate Services,Finance Analyst,2024-03-01,Active,B4
+E0034,Customer Service,Operations,Support Specialist,2026-06-21,Active,B2
+E0035,Sales,Commercial,Sales Manager,2025-07-14,Active,B4
+E0036,Customer Service,Operations,Team Leader,2019-05-11,Active,B1
+E0037,IT,Technology,Data Analyst,2024-08-07,Active,B1
+E0038,Sales,Commercial,Sales Executive,2020-07-26,Active,B1
+E0039,Sales,Commercial,Sales Executive,2023-10-07,Active,B4
+E0040,IT,Technology,Data Analyst,2026-02-10,Resigned,B4
+E0041,IT,Technology,IT Manager,2022-07-26,Active,B1
+E0042,Operations,Operations,Operations Manager,,Active,B1
+E0043,Operations,Operations,Logistics Coordinator,2019-02-08,Active,B3
+E0044,Sales,Commercial,Sales Executive,2020-10-15,Active,B4
+E0045,Finance,Corporate Services,Accountant,2021-02-14,Active,B1
+E0046,Marketing,Commercial,Marketing Manager,2019-02-06,Active,B1
+E0047,Customer Service,Operations,Customer Service Agent,2019-11-13,Active,B4
+E0048,IT,Technology,IT Manager,2018-08-29,Active,B1
+E0049,Customer Service,Operations,Team Leader,2023-02-07,Active,B4
+E0050,Finance,Corporate Services,Finance Analyst,2020-06-10,Resigned,B1
+E0051,Sales,Commercial,Sales Executive,2018-07-25,Active,B2
+E0052,Human Resources,Corporate Services,Recruiter,2018-11-25,Active,B1
+E0053,Operations,Operations,Unknown,2020-08-21,Active,B2
+E0054,Operations,Operations,Operations Officer,2024-12-11,Active,B3
+E0055,Customer Service,Operations,Customer Service Agent,2025-07-06,Active,B2
+E0056,IT,Technology,Data Analyst,2025-07-14,Active,B4
+E0057,IT,Technology,Software Engineer,2018-02-08,Active,B1
+E0058,Human Resources,Corporate Services,HR Officer,2023-09-04,Active,B3
+E0059,Customer Service,Operations,Customer Service Agent,2022-02-22,Active,B4
+E0060,Sales,Commercial,Account Officer,2021-05-24,Active,B1
+E0061,Operations,Operations,Logistics Coordinator,2021-05-11,Resigned,B1
+E0062,Customer Service,Operations,Customer Service Agent,2020-12-19,Active,B1
+E0063,Unknown,Unknown,Sales Executive,2021-01-20,Active,B2
+E0064,Sales,Commercial,Sales Executive,2025-09-16,Active,B3
+E0065,Unknown,Unknown,Content Creator,2018-07-28,Active,B4
+E0066,Sales,Commercial,Sales Executive,2018-01-15,Active,B2
+E0068,Operations,Operations,Operations Officer,2018-11-05,Resigned,B2
+E0069,Marketing,Commercial,Content Creator,2024-07-13,Active,B4
+E0070,Finance,Corporate Services,Finance Analyst,2022-02-02,On Leave,B1
+E0071,Customer Service,Operations,Customer Service Agent,2025-08-25,Active,B1
+E0072,IT,Technology,IT Manager,2024-12-17,Active,B2
+E0073,Sales,Commercial,Sales Executive,2022-08-16,Active,B3
+E0074,Sales,Commercial,Sales Manager,2025-07-06,Active,B2
+E0075,IT,Technology,Unknown,2022-04-16,Active,B4
+E0076,IT,Technology,IT Manager,2021-12-03,Active,B2
+E0077,IT,Technology,Data Analyst,2022-06-21,Active,B1
+E0078,Customer Service,Operations,Team Leader,2021-12-09,Active,B4
+E0079,Operations,Operations,Logistics Coordinator,2021-09-18,Resigned,B1
+E0080,Sales,Commercial,Sales Manager,2020-01-02,Active,B3
+E0081,Human Resources,Corporate Services,Recruiter,2022-11-15,Active,B3
+E0082,Marketing,Commercial,Marketing Manager,2019-04-19,Active,B2
+E0083,Unknown,Unknown,IT Manager,2018-01-07,Active,B2
+E0084,IT,Technology,Software Engineer,2025-06-13,Resigned,B3
+E0085,Operations,Operations,Operations Officer,2026-01-27,On Leave,B3
+E0086,Operations,Operations,Operations Manager,2022-07-07,Active,B2
+E0087,IT,Technology,IT Manager,2025-08-06,Active,B2
+E0088,Operations,Operations,Operations Manager,2022-07-22,Active,B1
+E0089,IT,Technology,Data Analyst,2022-10-27,Active,B3
+E0090,Marketing,Commercial,Content Creator,2025-07-30,Active,B4
+E0091,Sales,Commercial,Account Officer,2019-11-27,Active,B3
+E0092,Marketing,Commercial,Marketing Manager,2024-12-11,Active,B2
+E0093,Operations,Operations,Operations Officer,2020-03-26,Active,B1
+E0142,Finance,Corporate Services,Accountant,2021-07-16,Active,B2
+E0094,IT,Technology,IT Manager,2024-11-08,Active,B1
+E0095,Marketing,Commercial,Marketing Manager,2024-06-15,Active,B4
+E0096,Marketing,Commercial,Marketing Executive,2019-08-28,Active,B1
+E0097,Customer Service,Operations,Customer Service Agent,2022-10-08,Active,B4
+E0098,Human Resources,Corporate Services,HR Officer,2019-05-13,Active,B4
+E0099,Operations,Operations,Logistics Coordinator,2024-09-04,Active,B4
+E0100,Operations,Operations,Logistics Coordinator,2023-08-30,Active,B4
+E0101,Unknown,Unknown,Support Specialist,2023-04-29,Active,B2
+E0173,Sales,Commercial,Sales Executive,2025-05-17,Active,B4
+E0102,Sales,Commercial,Sales Manager,2023-11-06,Active,B2
+E0103,IT,Technology,Software Engineer,2026-01-01,Active,B3
+E0104,IT,Technology,Software Engineer,2019-07-21,Active,B4
+E0105,Operations,Operations,Logistics Coordinator,2020-05-26,Active,B4
+E0106,IT,Technology,IT Manager,2022-08-31,Active,B4
+E0107,IT,Technology,Software Engineer,2024-06-16,Active,B1
+E0108,Customer Service,Operations,Team Leader,2026-06-14,Active,B4
+E0109,Marketing,Commercial,Marketing Manager,2024-02-15,Active,B2
+E0110,Marketing,Commercial,Content Creator,2022-11-21,Active,B4
+E0111,IT,Technology,IT Manager,2026-02-14,Active,B4
+E0112,Customer Service,Operations,Support Specialist,2023-12-28,Active,B4
+E0113,Operations,Operations,Logistics Coordinator,2018-04-22,Active,B4
+E0114,Finance,Corporate Services,Finance Analyst,2020-01-15,Active,B4
+E0115,IT,Technology,IT Manager,2021-08-31,Active,B4
+E0116,IT,Technology,IT Manager,,Active,B4
+E0117,Human Resources,Corporate Services,Recruiter,2018-08-02,Resigned,B3
+E0118,IT,Technology,Software Engineer,2025-04-23,Active,B1
+E0119,Customer Service,Operations,Customer Service Agent,2018-03-25,Active,B2
+E0120,Finance,Corporate Services,Finance Manager,2019-04-14,Active,B2
+E0121,Marketing,Commercial,Content Creator,2022-02-19,Active,B1
+E0122,Sales,Commercial,Sales Executive,2021-06-28,Active,B1
+E0123,Customer Service,Operations,Support Specialist,2025-08-06,On Leave,B4
+E0124,IT,Technology,Data Analyst,2018-11-08,Active,B2
+E0125,Finance,Corporate Services,Finance Analyst,2025-09-03,Active,B1
+E0126,Sales,Commercial,Account Officer,2018-06-18,Active,B4
+E0127,Operations,Operations,Operations Officer,2023-09-04,Active,B1
+E0128,Sales,Commercial,Sales Manager,2019-03-09,Active,B3
+E0129,Operations,Operations,Operations Manager,2025-12-07,Active,B2
+E0130,Sales,Commercial,Account Officer,2021-01-11,Active,B4
+E0131,Marketing,Commercial,Marketing Manager,2024-08-23,Active,B2
+E0132,Sales,Commercial,Sales Executive,2021-02-16,On Leave,B2
+E0133,Sales,Commercial,Account Officer,2024-11-04,Active,B3
+E0134,Human Resources,Corporate Services,HR Manager,2020-01-15,Active,B3
+E0135,Sales,Commercial,Sales Manager,2021-02-19,On Leave,B3
+E0136,Operations,Operations,Logistics Coordinator,2020-02-22,Active,B4
+E0137,Marketing,Commercial,Marketing Executive,2025-09-29,Active,B4
+E0138,Marketing,Commercial,Marketing Executive,2019-01-17,Active,B4
+E0139,Operations,Operations,Operations Manager,2025-06-12,Active,B4
+E0140,Operations,Operations,Operations Manager,2022-10-09,Resigned,B3
+E0141,IT,Technology,IT Manager,2021-01-14,Active,B2
+E0143,IT,Technology,IT Manager,2021-02-06,Active,B3
+E0144,Customer Service,Operations,Customer Service Agent,2021-04-28,Active,B2
+E0145,IT,Technology,Data Analyst,2021-01-28,Active,B1
+E0146,Operations,Operations,Logistics Coordinator,2019-06-02,Active,B4
+E0147,Finance,Corporate Services,Accountant,2024-06-09,Active,B4
+E0148,Marketing,Commercial,Marketing Executive,2018-07-30,Active,B4
+E0149,Finance,Corporate Services,Accountant,2022-06-30,Active,B1
+E0150,Finance,Corporate Services,Finance Manager,2021-05-29,Active,B2
+E0151,Finance,Corporate Services,Finance Analyst,2024-10-19,Active,B2
+E0152,Sales,Commercial,Sales Manager,2023-01-20,On Leave,B3
+E0153,Sales,Commercial,Sales Manager,2021-06-04,Active,B1
+E0154,Operations,Operations,Logistics Coordinator,2019-02-11,Resigned,B2
+E0155,Operations,Operations,Operations Manager,2025-05-29,Active,B2
+E0156,Finance,Corporate Services,Accountant,2019-10-04,Active,B4
+E0157,Operations,Operations,Operations Manager,2021-04-07,Active,B3
+E0158,Sales,Commercial,Account Officer,2023-02-03,Active,B2
+E0159,Customer Service,Operations,Support Specialist,2024-08-12,Active,B2
+E0160,IT,Technology,Data Analyst,2025-04-06,Active,B3
+E0161,Sales,Commercial,Sales Executive,2018-09-02,Active,B3
+E0162,Operations,Operations,Logistics Coordinator,2021-03-28,Active,B4
+E0163,Operations,Operations,Logistics Coordinator,2022-07-07,Resigned,B4
+E0164,Marketing,Commercial,Marketing Manager,2018-06-13,On Leave,B3
+E0165,Operations,Operations,Operations Officer,2019-01-10,Active,B1
+E0166,Customer Service,Operations,Support Specialist,2021-01-08,Active,B2
+E0167,Marketing,Commercial,Marketing Manager,2022-12-17,On Leave,B2
+E0168,Customer Service,Operations,Team Leader,2025-02-13,Active,B1
+E0169,Marketing,Commercial,Content Creator,2021-09-27,Active,B1
+E0170,Sales,Commercial,Sales Manager,2022-08-14,Active,B3
+E0171,Operations,Operations,Operations Manager,2026-07-13,Active,B4
+E0172,Finance,Corporate Services,Finance Analyst,,Active,B4
+E0174,IT,Technology,Data Analyst,2023-10-25,Active,B4
+E0175,Operations,Operations,Operations Officer,2020-04-13,Active,B2
+E0176,Customer Service,Operations,Team Leader,2025-10-31,Active,B1
+E0177,Customer Service,Operations,Support Specialist,2020-09-07,Active,B3
+E0178,Operations,Operations,Logistics Coordinator,2022-07-30,Active,B1
+E0179,Unknown,Unknown,Marketing Executive,2025-04-07,Active,B4
+E0180,Customer Service,Operations,Team Leader,2023-09-16,Active,B4
+E0181,Sales,Commercial,Sales Manager,2020-09-25,Active,B2
+E0182,IT,Technology,Data Analyst,2018-10-13,Active,B4
+E0183,IT,Technology,IT Support,2018-01-11,Active,B3
+E0184,Sales,Commercial,Account Officer,2025-05-27,Active,B2
+E0185,Marketing,Commercial,Content Creator,2021-11-14,Active,B4
+E0186,Marketing,Commercial,Content Creator,2020-02-12,Resigned,B2
+E0187,Operations,Operations,Unknown,2022-08-10,Active,B4
+E0188,Sales,Commercial,Sales Manager,2022-05-01,Resigned,B2
+E0189,Marketing,Commercial,Marketing Executive,2019-06-02,Active,B3
+E0190,Sales,Commercial,Sales Manager,2019-02-13,Active,B4
+E0191,Human Resources,Corporate Services,HR Officer,2022-08-07,Active,B2
+E0192,Human Resources,Corporate Services,Unknown,2021-10-18,Active,B4
+E0193,Operations,Operations,Operations Manager,2025-07-25,Active,B4
+E0194,Customer Service,Operations,Support Specialist,2026-01-22,On Leave,B4
+E0195,Sales,Commercial,Sales Executive,2024-12-04,Active,B3
+E0196,Customer Service,Operations,Support Specialist,2019-01-06,Active,B1
+E0197,Sales,Commercial,Account Officer,2019-02-16,Active,B3
+E0198,Customer Service,Operations,Customer Service Agent,2021-08-21,Active,B3
+E0199,IT,Technology,IT Manager,2019-08-20,Active,B4
+E0200,Operations,Operations,Operations Officer,2019-11-28,Active,B4

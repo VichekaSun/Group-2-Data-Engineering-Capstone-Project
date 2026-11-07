@@ -1,0 +1,54 @@
+attendance_id,employee_id,attendance_date,status,check_in,check_out,hours_worked,reject_reason
+A000180,E0003,not_a_date,Late,09:17,17:25,8.13,attendance_date is not a valid date
+A003166,E0049,not_a_date,Present,07:59,17:15,9.27,attendance_date is not a valid date
+A003933,E0061,not_a_date,Present,07:48,17:30,9.7,attendance_date is not a valid date
+A006208,E0096,2026-13-45,Leave,,,0.0,attendance_date is not a valid date
+A007308,E0113,not_a_date,Present,07:41,17:37,9.93,attendance_date is not a valid date
+A008022,E0124,2026-13-45,Present,07:45,17:25,9.67,attendance_date is not a valid date
+A008609,E0133,not_a_date,Present,07:46,17:05,9.32,attendance_date is not a valid date
+A009325,E0144,31/02/2026,Present,07:48,17:16,9.47,attendance_date is not a valid date
+A010238,E0158,2026-00-10,Present,07:54,17:25,9.52,attendance_date is not a valid date
+A011034,E0170,31/02/2026,Present,07:42,17:08,9.43,attendance_date is not a valid date
+A002139,E0033,2026-10-22,N/A,07:31,17:21,9.83,invalid status
+A003003,E0047,2026-08-19,N/A,07:41,17:35,9.9,invalid status
+A003146,E0049,2026-09-07,N/A,07:59,17:15,9.27,invalid status
+A006870,E0106,2026-10-02,N/A,07:34,17:33,9.98,invalid status
+A008315,E0128,2026-10-23,N/A,07:36,17:44,10.13,invalid status
+A009959,E0154,2026-08-20,N/A,07:35,17:23,9.8,invalid status
+A001177,E0019,2026-08-11,Present,07:33,17:39,25,hours outside 0-24
+A002102,E0033,2026-09-01,Present,07:54,17:42,30,hours outside 0-24
+A002980,E0046,2026-10-16,Present,07:36,17:01,48,hours outside 0-24
+A003721,E0058,2026-08-24,Present,07:31,17:36,-3,hours outside 0-24
+A004504,E0070,2026-08-27,Present,07:48,17:13,99,hours outside 0-24
+A004997,E0077,2026-10-20,Present,07:54,17:09,30,hours outside 0-24
+A005451,E0084,2026-10-19,Present,07:42,17:01,48,hours outside 0-24
+A006676,E0103,2026-10-05,Present,07:49,17:06,-3,hours outside 0-24
+A008939,E0138,2026-09-17,Late,09:47,18:16,30,hours outside 0-24
+A009483,E0146,2026-10-21,Present,07:31,17:09,25,hours outside 0-24
+A010623,E0164,2026-09-09,Present,07:54,17:01,25,hours outside 0-24
+A011851,E0183,2026-08-31,Present,07:48,17:38,99,hours outside 0-24
+A000845,E0013,2026-10-30,Present,17:25,07:36,9.82,check_out before check_in
+A000850,E0014,2026-08-07,Present,17:42,07:30,10.2,check_out before check_in
+A001778,E0028,2026-09-02,Present,17:16,07:55,9.35,check_out before check_in
+A002308,E0036,2026-09-16,Present,17:38,07:59,9.65,check_out before check_in
+A002497,E0039,2026-09-08,Present,17:08,07:35,9.55,check_out before check_in
+A002948,E0046,2026-09-02,Present,17:42,07:59,9.72,check_out before check_in
+A003130,E0049,2026-08-14,Present,17:32,07:34,9.97,check_out before check_in
+A003132,E0049,2026-08-18,Present,17:14,07:56,9.3,check_out before check_in
+A004446,E0069,2026-09-07,Late,18:38,08:39,9.98,check_out before check_in
+A005719,E0088,2026-10-29,Present,17:22,07:57,9.42,check_out before check_in
+A005985,E0093,2026-08-07,Present,17:24,07:31,9.88,check_out before check_in
+A006044,E0093,2026-10-29,Present,17:36,07:40,9.93,check_out before check_in
+A006476,E0100,2026-09-28,Present,17:05,07:43,9.37,check_out before check_in
+A008065,E0125,2026-08-07,Present,17:24,07:58,9.43,check_out before check_in
+A008233,E0127,2026-09-30,Present,17:30,07:50,9.67,check_out before check_in
+A008427,E0130,2026-09-29,Present,17:37,07:47,9.83,check_out before check_in
+A008447,E0130,2026-10-27,Present,17:26,07:55,9.52,check_out before check_in
+A009783,E0151,2026-09-16,Present,17:24,07:57,9.45,check_out before check_in
+A010835,E0167,2026-10-02,Present,17:39,07:49,9.83,check_out before check_in
+A010990,E0170,2026-08-07,Present,17:16,07:36,9.67,check_out before check_in
+A010994,E0170,2026-08-13,Present,17:07,07:33,9.57,check_out before check_in
+A011744,E0181,2026-10-01,Present,17:13,07:58,9.25,check_out before check_in
+A012604,E0194,2026-10-22,Present,17:34,07:37,9.95,check_out before check_in
+A012622,E0195,2026-08-18,Present,17:41,07:49,9.87,check_out before check_in
+A013000,E0200,2026-10-30,Present,17:10,07:35,9.58,check_out before check_in
