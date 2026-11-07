@@ -1,0 +1,4 @@
+employee_id,department,job_title,hire_date,employment_status,salary_band,reject_reason
+E0024,Marketing,Marketing Manager,17/02/2018,Active,B1,"duplicate employee_id, conflicting values"
+E0067,Operations,Operations Manager,2019-10-24,Active,B4,"duplicate employee_id, conflicting values"
+E0113,Operations,Operations Manager,2018-04-22,Active,B4,"duplicate employee_id, conflicting values"
