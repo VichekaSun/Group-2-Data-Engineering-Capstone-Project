@@ -1,0 +1,150 @@
+{
+  "run_at": "2026-11-08T19:41:55",
+  "summary": {
+    "PASS": 19,
+    "WARN": 1,
+    "FAIL": 0
+  },
+  "checks": [
+    {
+      "dataset": "employees",
+      "rule": "employee_id is filled in",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "employees",
+      "rule": "employee_id is unique",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "employees",
+      "rule": "department is in the official list",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "employees",
+      "rule": "division is filled in",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "employees",
+      "rule": "hire_date is a valid YYYY-MM-DD date (blank is allowed)",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "employees",
+      "rule": "hire_date is not in the future",
+      "rows_checked": 200,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "attendance_id is unique",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "employee_id exists in employees",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "attendance_date is a valid YYYY-MM-DD date",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "status is Present, Absent, Late or Leave",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "hours_worked is a number between 0 and 24",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "check_out is not before check_in",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "Present/Late rows have a check_in",
+      "rows_checked": 12917,
+      "rows_failed": 32,
+      "status": "WARN"
+    },
+    {
+      "dataset": "attendance",
+      "rule": "one row per employee per day",
+      "rows_checked": 12917,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "employee_id exists in employees",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "score is filled in",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "reviewer_status is Approved, Draft or Pending",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "review_date is a valid YYYY-MM-DD date",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "score is a number between 1 and 5",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    },
+    {
+      "dataset": "performance",
+      "rule": "one review per employee per review_period",
+      "rows_checked": 372,
+      "rows_failed": 0,
+      "status": "PASS"
+    }
+  ]
+}
