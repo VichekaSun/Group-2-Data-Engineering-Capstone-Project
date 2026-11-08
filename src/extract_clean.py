@@ -342,6 +342,25 @@ def save_outputs(name, clean_df, rejects_df, log):
     print(f"[saved] {log_path.relative_to(BASE_DIR)}")
 
 
+# --------------------------------------------------------- airflow helpers
+CLEANERS = {
+    "employees": clean_employees,
+    "attendance": clean_attendance,
+    "performance": clean_performance,
+}
+
+
+def run_clean(dataset, run_date=None):
+    """Read one dataset from the data lake, clean it and save the outputs.
+
+    This is the one function an Airflow task calls per dataset.
+    Returns the cleaning log (small and JSON-friendly, so Airflow can store it).
+    """
+    clean_df, rejects_df, log = CLEANERS[dataset](read_raw(dataset, run_date))
+    save_outputs(dataset, clean_df, rejects_df, log)
+    return log
+
+
 if __name__ == "__main__":
     ingest_to_raw()
 
