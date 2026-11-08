@@ -1,12 +1,15 @@
 {
   "rows_in": 410,
-  "missing_score_rows_rejected": 9,
+  "identical_duplicates_dropped": 10,
+  "missing_score_rows_rejected": 8,
+  "score_outside_1_5_rows_rejected": 12,
   "status_labels_fixed": 15,
   "invalid_status_rows_rejected": 0,
+  "unknown_employee_rows_rejected": 8,
   "rows_by_status": {
-    "Approved": 325,
-    "Draft": 39,
-    "Pending": 37
+    "Approved": 302,
+    "Draft": 38,
+    "Pending": 32
   },
-  "rows_out": 401
+  "rows_out": 372
 }
