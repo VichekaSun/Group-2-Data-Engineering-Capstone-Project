@@ -2,10 +2,11 @@
 HR pipeline DAG - extract and clean step (Member A).
 
 ingest_to_raw  ->  clean_employees   \
-                   clean_attendance   >  (quality checks and load are added later)
+                   clean_attendance   >  quality_checks  ->  (load is added later)
                    clean_performance /
 
-The cleaning code lives in src/extract_clean.py. This file only calls it.
+The cleaning code lives in src/extract_clean.py and the checks in
+src/quality_checks.py. This file only calls them.
 """
 import sys
 from datetime import datetime
@@ -25,6 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE_DIR / "src"))
 
 import extract_clean  # noqa: E402  (needs the sys.path line above)
+import quality_checks  # noqa: E402
 
 
 def ingest(run_date):
@@ -33,6 +35,16 @@ def ingest(run_date):
 
 def clean(dataset, run_date):
     return extract_clean.run_clean(dataset, run_date)
+
+
+def check_quality():
+    """Run the quality checks. Any FAIL makes the task fail (a red box in Airflow)."""
+    results = quality_checks.run_quality_checks()
+    failed = [r for r in results if r["status"] == "FAIL"]
+    if failed:
+        names = "; ".join(f"{r['dataset']}: {r['rule']}" for r in failed)
+        raise ValueError(f"{len(failed)} quality check(s) failed: {names}")
+    return {s: sum(r["status"] == s for r in results) for s in ("PASS", "WARN", "FAIL")}
 
 
 with DAG(
@@ -59,4 +71,9 @@ with DAG(
         for dataset in ("employees", "attendance", "performance")
     ]
 
-    ingest_to_raw >> clean_tasks
+    quality_task = PythonOperator(
+        task_id="quality_checks",
+        python_callable=check_quality,
+    )
+
+    ingest_to_raw >> clean_tasks >> quality_task
