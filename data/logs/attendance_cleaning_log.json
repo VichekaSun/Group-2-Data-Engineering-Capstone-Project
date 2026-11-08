@@ -8,5 +8,6 @@
   "hours_outside_0_24_rejected": 12,
   "check_out_before_check_in_rejected": 25,
   "missing_check_in_kept": 32,
-  "rows_out": 12947
+  "unknown_employee_rows_rejected": 30,
+  "rows_out": 12917
 }

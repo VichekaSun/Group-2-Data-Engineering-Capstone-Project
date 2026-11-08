@@ -3,8 +3,27 @@ E0032,2025-H2,2025-12-08,,Approved,missing score
 E0074,2025-H2,2025-12-14,,Approved,missing score
 E0065,2025-H2,2025-12-13,,Approved,missing score
 E0070,2026-H1,2026-06-07,,Approved,missing score
-E0074,2025-H2,2025-12-14,,Approved,missing score
 E0099,2025-H2,2025-12-12,,Approved,missing score
 E0137,2025-H2,2025-12-07,,Draft,missing score
 E0152,2026-H1,2026-06-19,,Draft,missing score
 E0162,2026-H1,2026-06-07,,Approved,missing score
+E0015,2026-H1,2026-06-24,7,Approved,score outside 1-5
+E0027,2025-H2,2025-12-07,0,Pending,score outside 1-5
+E0042,2025-H2,2025-12-03,-1,Approved,score outside 1-5
+E0083,2025-H2,2025-12-06,-1,Approved,score outside 1-5
+E0111,2026-H1,2026-06-26,10,Pending,score outside 1-5
+E0121,2025-H2,2025-12-22,0,Approved,score outside 1-5
+E0122,2025-H2,2025-12-23,7,Approved,score outside 1-5
+E0130,2026-H1,2026-06-16,-1,Approved,score outside 1-5
+E0133,2026-H1,2026-06-15,7,Pending,score outside 1-5
+E0137,2026-H1,2026-06-28,-1,Approved,score outside 1-5
+E0159,2026-H1,2026-06-06,7,Approved,score outside 1-5
+E0182,2025-H2,2025-12-13,10,Approved,score outside 1-5
+E9053,2025-H2,2025-12-13,3,Approved,employee_id not in employees
+E9059,2026-H1,2026-06-25,4,Approved,employee_id not in employees
+E9044,2025-H2,2025-12-14,2,Approved,employee_id not in employees
+E9071,2025-H2,2025-12-27,3,Pending,employee_id not in employees
+E9057,2025-H2,2025-12-08,5,Approved,employee_id not in employees
+E9055,2025-H2,2025-12-28,2,Pending,employee_id not in employees
+E9065,2026-H1,2026-06-02,3,Approved,employee_id not in employees
+E9098,2026-H1,2026-06-17,5,Approved,employee_id not in employees
