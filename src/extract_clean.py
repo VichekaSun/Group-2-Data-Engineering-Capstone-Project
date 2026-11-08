@@ -246,7 +246,7 @@ def clean_employees(df):
 
 
 # ------------------------------------------------------------ attendance
-def clean_attendance(df):
+def clean_attendance(df, valid_employee_ids=None):
     """Apply the attendance cleaning rules, one rule at a time."""
     log = {"rows_in": len(df)}
     rejects = []
@@ -287,19 +287,37 @@ def clean_attendance(df):
     worked = df[ATT_STATUS].isin(["Present", "Late"])
     log["missing_check_in_kept"] = int((df["check_in"].isna() & worked).sum())
 
+    # Rule 7: employee_id must exist in the employees data (it links to
+    # dim_employee). A row for an unknown employee is rejected.
+    if valid_employee_ids is not None:
+        df, log["unknown_employee_rows_rejected"] = reject_rows(
+            df, ~df["employee_id"].isin(valid_employee_ids),
+            "employee_id not in employees", rejects)
+
     log["rows_out"] = len(df)
     return df, combine_rejects(rejects), log
 
 
 # ----------------------------------------------------------- performance
-def clean_performance(df):
+def clean_performance(df, valid_employee_ids=None):
     """Apply the performance cleaning rules."""
     log = {"rows_in": len(df)}
     rejects = []
 
+    # Rule 0: identical duplicate rows -> drop one copy
+    before = len(df)
+    df = df.drop_duplicates()
+    log["identical_duplicates_dropped"] = before - len(df)
+
     # Rule 1: a review without a score is rejected
     df, log["missing_score_rows_rejected"] = reject_rows(
         df, df[PERF_SCORE].isna(), "missing score", rejects)
+
+    # Rule 1b: the score must be a number from 1 to 5. Values like -1, 0, 7
+    # or 10 cannot be real scores, and we cannot know the right one -> reject.
+    score = pd.to_numeric(df[PERF_SCORE], errors="coerce")
+    df, log["score_outside_1_5_rows_rejected"] = reject_rows(
+        df, score.isna() | (score < 1) | (score > 5), "score outside 1-5", rejects)
 
     # Rule 2: status spelling -> Approved / Draft / Pending (for example
     # "approved", "APPROVED" and "Approved " all become "Approved"), so the
@@ -311,7 +329,14 @@ def clean_performance(df):
         df, unknown, "invalid reviewer_status", rejects)
     df[PERF_STATUS] = fixed[~unknown]
 
-    # Rule 3: keep Approved, Draft and Pending. The dashboard filters on status
+    # Rule 3: employee_id must exist in the employees data (it links to
+    # dim_employee). A review for an unknown employee is rejected.
+    if valid_employee_ids is not None:
+        df, log["unknown_employee_rows_rejected"] = reject_rows(
+            df, ~df["employee_id"].isin(valid_employee_ids),
+            "employee_id not in employees", rejects)
+
+    # Rule 4: keep Approved, Draft and Pending. The dashboard filters on status
     # later, so here we only count how many rows each status has.
     log["rows_by_status"] = {k: int(v) for k, v in df[PERF_STATUS].value_counts().items()}
 
@@ -350,13 +375,28 @@ CLEANERS = {
 }
 
 
+def read_valid_employee_ids(run_date=None):
+    """Every employee_id in the raw employees file.
+
+    Attendance and performance rows may only use these ids. Reading the raw
+    file (not the clean one) means the three cleaning tasks can still run in
+    parallel in Airflow.
+    """
+    return set(read_raw("employees", run_date)["employee_id"].dropna())
+
+
 def run_clean(dataset, run_date=None):
     """Read one dataset from the data lake, clean it and save the outputs.
 
     This is the one function an Airflow task calls per dataset.
     Returns the cleaning log (small and JSON-friendly, so Airflow can store it).
     """
-    clean_df, rejects_df, log = CLEANERS[dataset](read_raw(dataset, run_date))
+    df = read_raw(dataset, run_date)
+    if dataset == "employees":
+        clean_df, rejects_df, log = clean_employees(df)
+    else:
+        clean_df, rejects_df, log = CLEANERS[dataset](
+            df, read_valid_employee_ids(run_date))
     save_outputs(dataset, clean_df, rejects_df, log)
     return log
 
@@ -365,18 +405,21 @@ if __name__ == "__main__":
     ingest_to_raw()
 
     employees = read_raw("employees")
+    valid_ids = set(employees["employee_id"].dropna())
     emp_clean, emp_rejects, emp_log = clean_employees(employees)
     save_outputs("employees", emp_clean, emp_rejects, emp_log)
     print("\nEmployees cleaning log:", emp_log)
 
     attendance = read_raw("attendance")
-    att_clean, att_rejects, att_log = clean_attendance(attendance)
+    att_clean, att_rejects, att_log = clean_attendance(attendance, valid_ids)
     save_outputs("attendance", att_clean, att_rejects, att_log)
     print("\nAttendance cleaning log:", att_log)
     print("\nAttendance rejected rows by reason:")
     print(att_rejects["reject_reason"].value_counts().to_string())
 
     performance = read_raw("performance")
-    perf_clean, perf_rejects, perf_log = clean_performance(performance)
+    perf_clean, perf_rejects, perf_log = clean_performance(performance, valid_ids)
     save_outputs("performance", perf_clean, perf_rejects, perf_log)
     print("\nPerformance cleaning log:", perf_log)
+    print("\nPerformance rejected rows by reason:")
+    print(perf_rejects["reject_reason"].value_counts().to_string())

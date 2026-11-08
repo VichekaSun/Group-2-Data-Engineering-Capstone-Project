@@ -52,3 +52,33 @@ A011744,E0181,2026-10-01,Present,17:13,07:58,9.25,check_out before check_in
 A012604,E0194,2026-10-22,Present,17:34,07:37,9.95,check_out before check_in
 A012622,E0195,2026-08-18,Present,17:41,07:49,9.87,check_out before check_in
 A013000,E0200,2026-10-30,Present,17:10,07:35,9.58,check_out before check_in
+A001121,E9007,2026-08-24,Present,07:38,17:29,9.85,employee_id not in employees
+A001320,E9035,2026-08-28,Late,09:45,17:02,7.28,employee_id not in employees
+A001636,E9075,2026-08-17,Present,07:59,17:01,9.03,employee_id not in employees
+A001670,E9048,2026-10-02,Present,07:57,17:27,9.5,employee_id not in employees
+A001846,E9012,2026-09-07,Present,07:32,17:13,9.68,employee_id not in employees
+A003505,E9080,2026-10-23,Late,08:49,17:23,8.57,employee_id not in employees
+A003553,E9001,2026-09-30,Present,07:57,17:41,9.73,employee_id not in employees
+A004241,E9066,2026-08-24,Late,09:32,17:33,8.02,employee_id not in employees
+A004779,E9089,2026-09-17,Present,07:45,17:03,9.3,employee_id not in employees
+A004984,E9073,2026-10-01,Present,07:42,17:29,9.78,employee_id not in employees
+A005368,E9033,2026-09-23,Present,07:42,17:23,9.68,employee_id not in employees
+A005761,E9093,2026-09-28,Present,07:37,17:04,9.45,employee_id not in employees
+A006261,E9097,2026-08-31,Present,07:56,17:45,9.82,employee_id not in employees
+A006838,E9055,2026-08-19,Present,07:35,17:02,9.45,employee_id not in employees
+A007818,E9066,2026-08-26,Present,07:31,17:32,10.02,employee_id not in employees
+A008005,E9096,2026-08-14,Present,07:32,17:15,9.72,employee_id not in employees
+A008133,E9088,2026-08-12,Present,07:32,17:09,9.62,employee_id not in employees
+A008721,E9044,2026-08-17,Present,07:52,17:16,9.4,employee_id not in employees
+A008797,E9032,2026-09-01,Late,09:28,17:08,7.67,employee_id not in employees
+A009152,E9028,2026-10-13,Present,07:39,17:13,9.57,employee_id not in employees
+A009263,E9045,2026-09-16,Leave,,,0.0,employee_id not in employees
+A009789,E9070,2026-09-24,Present,07:51,17:42,9.85,employee_id not in employees
+A010018,E9020,2026-08-12,Present,07:57,17:28,9.52,employee_id not in employees
+A010105,E9082,2026-09-11,Present,07:42,17:17,9.58,employee_id not in employees
+A010110,E9080,2026-09-18,Present,07:39,17:18,9.65,employee_id not in employees
+A010732,E9006,2026-08-11,Present,07:50,17:28,9.63,employee_id not in employees
+A011212,E9045,2026-09-15,Present,07:42,17:15,9.55,employee_id not in employees
+A011718,E9052,2026-08-26,Present,07:38,17:42,10.07,employee_id not in employees
+A012101,E9038,2026-08-17,Present,07:36,17:45,10.15,employee_id not in employees
+A012109,E9034,2026-08-27,Present,07:48,17:04,9.27,employee_id not in employees
