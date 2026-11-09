@@ -5,6 +5,7 @@ Status: draft, 9 Nov 2026. Owners are listed as Member A, B and C until the READ
 Every policy line carries a tag:
 
 - **Enforced**: the code or the configuration already does this.
+- **Agreed**: the team agreed to it in the project roadmap (`HR Pipeline Roadmap.html`), but nothing enforces it yet.
 - **Proposed**: the team must agree to it before it applies.
 
 ## 1. Ownership, **Proposed** (until the README names the members)
@@ -82,35 +83,58 @@ Rejected rows go to `data/rejects/<dataset>_rejected.csv` with a `reject_reason`
 - Rejected rows are never fixed by hand in `data/clean/`. Fix the source, then run the pipeline again. **Proposed**
 - Latest result (`data/logs/quality_report.json`): 19 PASS, 1 WARN, 0 FAIL.
 
-## 4. Access roles, **Proposed**
+### 3d. Roadmap quality rules, **Agreed**
 
-| Role | Who | Access | Example warehouse role |
-| --- | --- | --- | --- |
-| `pipeline_service` | The Airflow container | Reads `data/*`. Writes clean, rejects and logs. Writes the warehouse tables. | A dedicated loader role. `dag/hr_pipeline.py` defaults to `SYSADMIN`, which has more rights than the pipeline needs. |
-| `data_engineer` | Members A and B | Read and write on the repo and the warehouse, including raw and rejects | Developer role |
-| `analyst` | Member C | Read-only on the `ANALYTICS` report views. No access to raw files or rejects. | Read-only reporting role |
-| `hr_viewer` | Managers | The Power BI dashboard only. Performance data is limited to Approved rows. | None (Power BI sharing) |
+| Roadmap rule | Covered by |
+| --- | --- |
+| Employee ID unique and not empty | employees: employee_id is filled in; employee_id is unique |
+| Status: Present, Absent, Leave or Late | attendance: status is Present, Absent, Late or Leave |
+| Hours worked 0 to 24 | attendance: hours_worked is a number between 0 and 24 |
+| Valid dates, none in the future | Valid dates: hire_date, attendance_date and review_date are all checked. Future dates: only hire_date is checked. **Gap**: attendance_date and review_date are not checked for future dates. |
+| Every row points to a known employee | attendance and performance: employee_id exists in employees |
+| Department in the reference list | employees: department is in the official list |
+
+## 4. Access roles, **Agreed**
+
+| Role | Access |
+| --- | --- |
+| `hr_admin` | Everything, including the raw data lake (`data/raw/`), `data/rejects/` and the warehouse |
+| `hr_analyst` | The warehouse, read-only. No access to the data lake. |
+| `report_viewer` | The Power BI dashboard only |
+
+None of these roles is set up in the warehouse or in Power BI yet. Notes:
+
+- The Airflow pipeline needs `hr_admin`-level access to the data lake and write access to the warehouse. `dag/hr_pipeline.py` defaults to the Snowflake role `SYSADMIN`, which has more rights than the pipeline needs. Give the pipeline its own loader role. **Proposed**
 
 ## 5. Retention
 
 | Location | What is kept | Rule |
 | --- | --- | --- |
-| `data/raw/<dataset>/<date>/` | An untouched copy of each run's source files | Never overwritten. **Enforced** by `ingest_to_raw`. Keep them until 90 days after the 18 Nov 2026 submission, then delete. **Proposed** |
+| `data/raw/<dataset>/<date>/` | An untouched copy of each run's source files | Never overwritten. **Enforced** by `ingest_to_raw`. Kept for 12 months, then deleted. **Agreed** (no clean-up job exists yet) |
 | `data/clean/`, `data/rejects/`, `data/logs/` | The latest run only | Overwritten on every run, so there is no history and only the latest run can be audited. **Enforced** |
-| Warehouse | The loaded star schema | Rebuilt from `data/clean/` on each load. **Proposed** |
+| Warehouse | The loaded star schema | Kept for 5 years. **Agreed** |
 | `.env` (secrets) | Database and Snowflake credentials | Kept out of git. **Enforced** by `.gitignore`. Never posted in chat or committed. **Proposed** |
 
 ## 6. Privacy
 
 - The data is synthetic. **Enforced** by `src/generate_data.py`.
+- No names, phones or addresses in reports. **Agreed**
 - No columns hold names, phones, emails or addresses. **Enforced** by `src/generate_data.py` (it creates no such columns) and `sql/create_star_schema.sql` (it defines none).
 - Reports go no deeper than `employee_id`. **Enforced** by the star schema.
 - MySQL and Airflow accept connections only from the local machine (`127.0.0.1`). **Enforced** in `docker-compose.yml`.
-- `score`, `salary_band` and `employment_status` are sensitive. Only `data_engineer` sees them at row level; the dashboard shows them as totals. **Proposed**
+- `score`, `salary_band` and `employment_status` are sensitive. `report_viewer` sees them only as totals on the dashboard. **Proposed**
 - The dashboard hides any group with fewer than 5 employees. **Proposed**
 - The same rules apply if real data ever replaces the synthetic data. **Proposed**
 
-## 7. Change management and incidents
+## 7. Definitions
+
+These come from the README's dashboard section.
+
+- **Headcount**: employees whose `employment_status` is Active or On Leave. Resigned employees are excluded.
+- **Attendance rate**: (Present + Late) / all attendance rows.
+- **Approved performance**: only the performance page filters to `reviewer_status = 'Approved'`. Draft and Pending rows stay in the warehouse.
+
+## 8. Change management and incidents
 
 - Branch from `dev`, open a PR into `dev`, get a review from another member, and merge. Merge `dev` into `main` by PR. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
 - A schema change, a new rule or a change to the reference data must update `docs/data_dictionary.md` and this document in the same PR. **Proposed**
@@ -122,5 +146,5 @@ Rejected rows go to `data/rejects/<dataset>_rejected.csv` with a `reject_reason`
 - The warehouse engine: MySQL, Snowflake or PostgreSQL.
 - The pipeline's warehouse role, to replace the `SYSADMIN` default.
 - Whether to keep clean, rejects and log files for each run date.
-- How long to keep data after submission (90 days is proposed).
+- Who adds future-date checks for `attendance_date` and `review_date` (see section 3d).
 - The smallest group the dashboard may show (5 is proposed).
