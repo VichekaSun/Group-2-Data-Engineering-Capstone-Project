@@ -7,7 +7,7 @@ Every policy line carries a tag:
 - **Enforced**: the code or the configuration already does this.
 - **Proposed**: the team must agree to it before it applies.
 
-## 1. Ownership
+## 1. Ownership, **Proposed** (until the README names the members)
 
 | Asset | Owner | Responsibility |
 | --- | --- | --- |
@@ -76,7 +76,8 @@ Rejected rows go to `data/rejects/<dataset>_rejected.csv` with a `reject_reason`
 
 ### 3c. Thresholds
 
-- Any FAIL fails the Airflow `quality_checks` task, so the load does not run. Run on its own, the script exits with code 1. **Enforced**
+- Any FAIL fails the Airflow `quality_checks` task. Run on its own, the script exits with code 1. **Enforced**
+- The load tasks, once added, must depend on `quality_checks`, so that a FAIL blocks the load. **Proposed** (no load task exists yet)
 - The data owner reviews each WARN before the dashboard is refreshed. **Proposed**
 - Rejected rows are never fixed by hand in `data/clean/`. Fix the source, then run the pipeline again. **Proposed**
 - Latest result (`data/logs/quality_report.json`): 19 PASS, 1 WARN, 0 FAIL.
@@ -102,7 +103,7 @@ Rejected rows go to `data/rejects/<dataset>_rejected.csv` with a `reject_reason`
 ## 6. Privacy
 
 - The data is synthetic. **Enforced** by `src/generate_data.py`.
-- No columns hold names, phones, emails or addresses. **Enforced** by the schema and the data dictionary.
+- No columns hold names, phones, emails or addresses. **Enforced** by `src/generate_data.py` (it creates no such columns) and `sql/create_star_schema.sql` (it defines none).
 - Reports go no deeper than `employee_id`. **Enforced** by the star schema.
 - MySQL and Airflow accept connections only from the local machine (`127.0.0.1`). **Enforced** in `docker-compose.yml`.
 - `score`, `salary_band` and `employment_status` are sensitive. Only `data_engineer` sees them at row level; the dashboard shows them as totals. **Proposed**
@@ -111,10 +112,10 @@ Rejected rows go to `data/rejects/<dataset>_rejected.csv` with a `reject_reason`
 
 ## 7. Change management and incidents
 
-- Branch from `dev`, open a PR into `dev`, get a review from another member, and merge. Merge `dev` into `main` by PR. **Enforced** by the team workflow in the README.
+- Branch from `dev`, open a PR into `dev`, get a review from another member, and merge. Merge `dev` into `main` by PR. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
 - A schema change, a new rule or a change to the reference data must update `docs/data_dictionary.md` and this document in the same PR. **Proposed**
 - A FAIL in Airflow is fixed by the owner of that dataset on the same day. **Proposed**
-- Anyone stuck for more than half a day tells the group chat. **Enforced** by the team workflow in the README.
+- Anyone stuck for more than half a day tells the group chat. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
 
 ## Open decisions
 
