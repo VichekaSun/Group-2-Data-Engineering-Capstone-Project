@@ -8,9 +8,9 @@ This pipeline takes synthetic HR data through five steps: ingest, clean, quality
 
 | Role | Track | Main files |
 |---|---|---|
-| Member A | Data and Quality | `src/generate_data.py`, `src/extract_clean.py`, `src/quality_checks.py`, `dag/hr_pipeline_dag.py`, `notebooks/profiling.ipynb` |
-| Member B | Warehouse and Airflow | `docker-compose.yml`, `sql/create_star_schema.sql`, `dag/hr_pipeline.py`, load scripts (TBD) |
-| Member C | Analytics and Documents | `README.md`, `docs/`, `sql/report_views.sql`, `tests/test_report_views.py`, `powerbi/`, submission |
+| Chea Dalin | Data and Quality | `src/generate_data.py`, `src/extract_clean.py`, `src/quality_checks.py`, `dag/hr_pipeline_dag.py`, `notebooks/profiling.ipynb` |
+| Lim Viboth | Warehouse and Airflow | `docker-compose.yml`, `sql/create_star_schema.sql`, `dag/hr_pipeline.py`, load scripts (TBD) |
+| Sun Vicheka | Analytics and Documents | `README.md`, `docs/`, `sql/report_views.sql`, `tests/test_report_views.py`, `powerbi/`, submission |
 
 <!-- add names: Member A = ..., Member B = ..., Member C = ... -->
 
