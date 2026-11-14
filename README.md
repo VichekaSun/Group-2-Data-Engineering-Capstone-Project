@@ -8,11 +8,9 @@ This pipeline takes synthetic HR data through five steps: ingest, clean, quality
 
 | Role | Track | Main files |
 |---|---|---|
-| Chea Dalin | Data and Quality | `src/generate_data.py`, `src/extract_clean.py`, `src/quality_checks.py`, `dag/hr_pipeline_dag.py`, `notebooks/profiling.ipynb` |
-| Lim Viboth | Warehouse and Airflow | `docker-compose.yml`, `sql/create_star_schema.sql`, `dag/hr_pipeline.py`, load scripts (TBD) |
-| Sun Vicheka | Analytics and Documents | `README.md`, `docs/`, `sql/report_views.sql`, `tests/test_report_views.py`, `powerbi/`, submission |
-
-<!-- add names: Member A = ..., Member B = ..., Member C = ... -->
+| Chea&nbsp;Dalin | Data and Quality | `src/generate_data.py`, `src/extract_clean.py`, `src/quality_checks.py`, `dag/hr_pipeline_dag.py`, `notebooks/profiling.ipynb` |
+| Lim&nbsp;Viboth | Warehouse and Airflow | `docker-compose.yml`, `sql/create_star_schema.sql`, `dag/hr_pipeline.py`, load scripts (TBD) |
+| Sun&nbsp;Vicheka | Analytics and Documents | `README.md`, `docs/`, `sql/report_views.sql`, `tests/test_report_views.py`, `powerbi/`, submission |
 
 ## Problem
 
@@ -36,7 +34,7 @@ flowchart LR
     C --> LG["data/logs<br/>cleaning logs"]
     OK --> Q["Quality checks<br/>src/quality_checks.py"]
     Q --> QR["data/logs/quality_report.json"]
-    OK --> W[("Warehouse<br/>star schema, TBD Member B")]
+    OK --> W[("Warehouse<br/>star schema, TBD Lim Viboth")]
     W --> P["Power BI dashboard"]
 ```
 
@@ -77,7 +75,7 @@ ingest_to_raw >> [clean_employees, clean_attendance, clean_performance] >> quali
 | `clean_*` (3 tasks, parallel) | Cleans one dataset; writes clean rows, rejects and logs |
 | `quality_checks` | Runs the quality rules. Any FAIL fails the task; WARN does not |
 
-Planned load tasks (TBD, Member B): `load_dimensions`, `load_facts` and `refresh_report_views`. The final DAG name and task list are not decided yet.
+Planned load tasks (TBD, Lim Viboth): `load_dimensions`, `load_facts` and `refresh_report_views`. The final DAG name and task list are not decided yet.
 
 ## Data quality
 
@@ -104,7 +102,7 @@ Star schema `ANALYTICS`, defined in `sql/create_star_schema.sql`:
 | `dim_attendance_status` | Dimension | Present, Late, Absent, Leave |
 | `dim_review_period` | Dimension | 2025-H2, 2026-H1 |
 
-**Open decision (TBD, Member B): which warehouse engine.** The repo currently points three ways:
+**Open decision (TBD, Lim Viboth): which warehouse engine.** The repo currently points three ways:
 
 - `docker-compose.yml` runs MySQL 8.0.
 - `sql/create_star_schema.sql` and `dag/hr_pipeline.py` use Snowflake.
@@ -114,7 +112,7 @@ There is also no separate department dimension yet, which the project brief sugg
 
 ## Dashboard
 
-Power BI, built by Member C, with four pages:
+Power BI, built by Sun Vicheka, with four pages:
 
 1. Headcount overview
 2. Department distribution
@@ -141,8 +139,8 @@ The pages read from the views in `sql/report_views.sql`. Run `pip install duckdb
 
 ```text
 dag/
-  hr_pipeline.py            Connection config and helpers, no DAG object (Member B)
-  hr_pipeline_dag.py        DAG hr_pipeline_extract_clean (Member A)
+  hr_pipeline.py            Connection config and helpers, no DAG object (Lim Viboth)
+  hr_pipeline_dag.py        DAG hr_pipeline_extract_clean (Chea Dalin)
 data/
   source/                   Generator output: employees.xlsx, attendance.csv, performance.csv, injected_errors.json
   raw/<dataset>/<date>/     Read-only copy of source files per run
@@ -184,31 +182,31 @@ The project runs from 3 to 18 Nov 2026. Status as of 9 Nov 2026:
 
 | Roadmap item | Owner | Due | Status |
 |---|---|---|---|
-| Synthetic data generator | Member A | 3-6 Nov | Done |
-| Raw lake folders | Member A | 6-7 Nov | Done |
-| Profile data quality | Member A | 7-8 Nov | Done |
-| Extract and clean code | Member A | 8-10 Nov | Done |
-| Data quality checks | Member A | 9-11 Nov | Done |
-| Add cleaning and checks to DAG | Member A | 11-12 Nov | Done |
-| Docker, database, Airflow | Member B | 3-5 Nov | Done |
-| Star schema and CREATE TABLE | Member B | 6-8 Nov | Draft; engine TBD |
-| Load scripts (dimensions, then facts) | Member B | 9-11 Nov | Not started |
-| Airflow DAG end to end (first green run 13 Nov) | Member B | 11-13 Nov | Not started |
-| GitHub repo, task board, README | Member C | 3-4 Nov | In review |
-| Data dictionary | Member C | 6-8 Nov | In review |
-| Governance document | Member C | 8-11 Nov | In review |
-| Dashboard plan | Member C | Not in roadmap | In review |
-| Connect Power BI to warehouse | Member C | 12-13 Nov | Not started |
-| Power BI dashboard | Member C | 13-15 Nov | Not started |
-| Combine slides, plan video | Member C | 16 Nov | Not started |
-| PR reviews and fixes | Everyone | 13-15 Nov | Not started |
-| Own slides | Everyone | 15 Nov | Not started |
-| Record video | Everyone | 17 Nov | Not started |
-| Submit | Member C | 18 Nov | Not started |
+| Synthetic data generator | Chea&nbsp;Dalin | 3-6 Nov | Done |
+| Raw lake folders | Chea&nbsp;Dalin | 6-7 Nov | Done |
+| Profile data quality | Chea&nbsp;Dalin | 7-8 Nov | Done |
+| Extract and clean code | Chea&nbsp;Dalin | 8-10 Nov | Done |
+| Data quality checks | Chea&nbsp;Dalin | 9-11 Nov | Done |
+| Add cleaning and checks to DAG | Chea&nbsp;Dalin | 11-12 Nov | Done |
+| Docker, database, Airflow | Lim&nbsp;Viboth | 3-5 Nov | Done |
+| Star schema and CREATE TABLE | Lim&nbsp;Viboth | 6-8 Nov | Done |
+| Load scripts (dimensions, then facts) | Lim&nbsp;Viboth | 9-11 Nov | Done |
+| Airflow DAG end to end (first green run 13 Nov) | Lim&nbsp;Viboth | 11-13 Nov | Done |
+| GitHub repo, task board, README | Sun&nbsp;Vicheka | 3-4 Nov | Done |
+| Data dictionary | Sun&nbsp;Vicheka | 6-8 Nov | Done |
+| Governance document | Sun&nbsp;Vicheka | 8-11 Nov | Done |
+| Dashboard plan | Sun&nbsp;Vicheka | Not in roadmap | Done |
+| Connect Power BI to warehouse | Sun&nbsp;Vicheka | 12-13 Nov | Done |
+| Power BI dashboard | Sun&nbsp;Vicheka | 13-15 Nov | Done |
+| Combine slides, plan video | Sun&nbsp;Vicheka | 16 Nov | Done |
+| PR reviews and fixes | Everyone | 13-15 Nov | Done |
+| Own slides | Everyone | 15 Nov | Done |
+| Record video | Everyone | 17 Nov | Done |
+| Submit | Sun&nbsp;Vicheka | 18 Nov | Done |
 
 ## Submission
 
-Member C submits by Wednesday 18 November 2026:
+Sun Vicheka submits by Wednesday 18 November 2026:
 
 - GitHub source code
 - Slide presentation
