@@ -138,6 +138,16 @@
     const img = s.querySelector("img");
     if (img.getAttribute("src")) { s.classList.add("filled"); s.dataset.fixed = "1"; }
   });
+  // Real screenshots saved next to the deck (data-src) win over everything:
+  // if assets/shots/<key>.png exists, it is shown on every computer.
+  document.querySelectorAll(".slot[data-src]").forEach((s) => {
+    const probe = new Image();
+    probe.onload = () => {
+      const img = s.querySelector("img");
+      img.src = s.dataset.src; s.classList.add("filled"); s.dataset.fixed = "1";
+    };
+    probe.src = s.dataset.src;
+  });
   const picker = document.createElement("input");
   picker.type = "file"; picker.accept = "image/*"; picker.hidden = true;
   document.body.appendChild(picker);
