@@ -347,3 +347,128 @@ table.t td.err { background: #fde4e4; color: var(--bad); font-weight: 600; box-s
 .mini span { position: absolute; inset: 0 auto 0 0; background: var(--accent); }
 .pcircle.logo img { width: 52%; height: 52%; object-fit: contain; }
 .pipe.small .pcircle.logo img { width: 56%; height: 56%; }
+
+/* ---------- slide: how we worked (git flow) ---------- */
+.gf-row { display: grid; grid-template-columns: 1.2fr 1fr 1.1fr; gap: 24px; margin-top: 12px; flex: 1 1 auto; min-height: 0; max-height: 214px; }
+.gf-steps { list-style: none; display: flex; flex-direction: column; justify-content: space-between; gap: 6px; }
+.gf-steps li { display: flex; align-items: center; gap: 14px; }
+.gf-steps .n { flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--tint); color: var(--brand-d); font-family: var(--display); font-weight: 800; font-size: 15px; }
+.gf-steps b { display: block; font-size: 15.5px; color: var(--ink); }
+.gf-steps div > span { font-size: 13px; color: var(--ink3); }
+.gf-steps code { font-size: 13px; }
+.gf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.gf-stats > div { background: #f6f9fc; border-top: 3px solid var(--brand); padding: 12px 16px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.gf-stats .v { font-family: var(--display); font-size: 36px; font-weight: 800; letter-spacing: -.03em; color: var(--brand); line-height: 1; }
+.gf-stats .k { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+
+/* ---------- Power BI screenshots + live demo ---------- */
+.pbi { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1 1 auto; min-height: 0; align-content: center; }
+.pbi figure { margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.pbi img { width: 100%; aspect-ratio: 1184 / 662; object-fit: contain; display: block; border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(15,31,51,.08); background: #fff; }
+.pbi figcaption { display: flex; flex-direction: column; gap: 2px; padding-left: 12px; border-left: 3px solid var(--brand); }
+.pbi figcaption b { font-family: var(--display); font-size: 18px; color: var(--ink); }
+.pbi figcaption span { font-size: 13.5px; color: var(--ink2); }
+.demo-play { position: relative; z-index: 1; flex: 0 0 auto; width: 190px; height: 190px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); box-shadow: 0 0 0 14px rgba(255,255,255,.05); }
+.demo-play svg { width: 84px; height: 84px; fill: #6fe0c8; margin-left: 10px; }
+.demo .div-speaker { align-self: flex-end; }
+
+/* ---------- real screenshots over generated blocks ----------
+   Empty: a small dashed tag in the block's top-right corner (hidden when presenting/printing).
+   Filled: the real image covers the generated block, same box. */
+.swap { position: relative; }
+.swap > .slot.shot { position: absolute; top: -4px; right: -4px; z-index: 4; max-width: 300px; border-width: 1.5px; background: rgba(255,255,255,.94); box-shadow: 0 2px 8px rgba(15,31,51,.08); display: block; text-align: left; }
+.swap > .slot.shot figcaption { font-size: 11.5px; line-height: 1.4; padding: 7px 11px; color: var(--ink2); }
+.swap > .slot.shot figcaption b { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--warn); }
+.swap > .slot.shot figcaption i { display: block; font-style: normal; color: var(--ink3); font-size: 10.5px; margin-top: 2px; }
+.swap > .slot.shot:not(.filled):hover { background: #fff8ec; border-color: var(--warn); }
+.swap:has(> .slot.filled) > :not(.slot) { visibility: hidden; }
+.swap > .slot.shot.filled { inset: 0; top: 0; right: 0; max-width: none; box-shadow: none; background: #fff; border: 1px solid var(--line); }
+body.present .swap > .slot.shot:not(.filled) { display: none; }
+@media print { .swap > .slot.shot:not(.filled) { display: none; } }
+/* compact pill when empty; details appear on hover */
+.swap > .slot.shot:not(.filled) { top: -2px; right: 0; max-width: 320px; border-radius: 14px; }
+.swap > .slot.shot:not(.filled) figcaption { padding: 3px 11px; }
+.swap > .slot.shot:not(.filled) figcaption b { margin: 0; }
+.swap > .slot.shot:not(.filled) figcaption b::before { content: "▣ "; }
+.swap > .slot.shot:not(.filled) figcaption { font-size: 0; }
+.swap > .slot.shot:not(.filled) figcaption b { font-size: 10.5px; }
+.swap > .slot.shot:not(.filled):hover { border-radius: 4px; }
+.swap > .slot.shot:not(.filled):hover figcaption { font-size: 11.5px; padding: 7px 11px; }
+.swap > .slot.shot:not(.filled) figcaption i { font-size: 0; margin: 0; }
+.swap > .slot.shot:not(.filled):hover figcaption i { font-size: 10.5px; margin-top: 2px; }
+/* filled: real image replaces the generated block and keeps its own height */
+.swap:has(> .slot.filled) > :not(.slot) { display: none; }
+.swap > .slot.shot.filled { position: relative; inset: auto; border: 1px solid var(--line); box-shadow: 0 6px 18px rgba(15,31,51,.08); }
+.swap > .slot.shot.filled img { position: static; display: block; width: 100%; height: auto; max-height: var(--shot-h, 360px); object-fit: contain; }
+.swap:has(> .slot.filled) { margin-bottom: 20px; }
+
+/* ================= light theme: white + blue for cover, dividers, thank-you ================= */
+.cover { background: #fff; color: var(--ink); }
+.cover h1 { color: var(--brand-d); }
+.cover .eyebrow { color: var(--brand); font-weight: 700; }
+.cover .sub { color: var(--ink2); }
+.cover .rule { background: var(--brand); }
+.cover-meta { color: var(--ink3); gap: 10px 26px; }
+.cover-meta b { color: var(--ink); }
+.cover::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; background: linear-gradient(var(--brand), #5b9bd5); z-index: 1; }
+.school { position: absolute; top: 44px; left: 72px; display: flex; align-items: center; gap: 16px; z-index: 2; }
+.school img { height: 64px; width: auto; display: block; }
+.school b { display: block; font-family: var(--display); font-size: 20px; font-weight: 800; color: var(--brand-d); letter-spacing: -.01em; }
+.school span { font-size: 12.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+
+.slide.divider { background: linear-gradient(120deg, #ffffff 0%, #f4f8fc 50%, #e3edf7 100%); color: var(--ink); }
+.slide.divider::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; background: linear-gradient(var(--brand), #5b9bd5); }
+.slide.divider::after { border-color: rgba(31,78,121,.07); }
+.div-num { color: rgba(31,78,121,.13); }
+.div-body h2 { color: var(--brand-d); }
+.div-body .eyebrow { color: var(--brand); }
+.div-body li { color: var(--ink2); }
+.div-body li::before { background: var(--brand); }
+.div-speaker span { color: var(--ink3); }
+.div-speaker b { color: var(--brand-d); }
+.slot.photo.big { background-color: #fff; border-color: rgba(31,78,121,.3); }
+.slot.photo.big figcaption { color: var(--brand); }
+.slot.photo.big:not(.filled):hover { background-color: var(--tint); border-color: var(--brand); }
+.slot.photo.big.filled { box-shadow: 0 0 0 6px var(--tint); }
+.demo-play { background: #fff; box-shadow: 0 0 0 14px rgba(31,78,121,.07), 0 10px 30px rgba(31,78,121,.12); }
+.demo-play svg { fill: var(--brand); }
+
+/* cartoon portraits: default picture in each photo circle; a real photo (click) still covers it */
+.slot.photo[data-slot] { background-size: cover !important; background-position: center !important; border-style: solid; }
+.slot.photo[data-slot="photo-dalin"] { background-image: url("assets/avatars/chea-dalin.svg") !important; }
+.slot.photo[data-slot="photo-viboth"] { background-image: url("assets/avatars/lim-viboth.svg") !important; }
+.slot.photo[data-slot="photo-vicheka"] { background-image: url("assets/avatars/sun-vicheka.svg") !important; }
+.slot.photo[data-slot] figcaption { visibility: hidden; }
+.slot.photo.big { box-shadow: 0 0 0 6px var(--tint), 0 12px 30px rgba(31,78,121,.15); border: 0; }
+.cover-meta { font-size: 15.5px; }
+/* cover: lecturer / course block under the logo */
+.cover-info { position: absolute; top: 148px; left: 72px; z-index: 2; display: flex; gap: 0; margin: 0; }
+.cover-info > div { padding: 2px 30px 2px 18px; border-left: 3px solid var(--brand); }
+.cover-info > div + div { border-left-color: #b9d0e6; }
+.cover-info dt { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink3); margin-bottom: 6px; }
+.cover-info dd { margin: 0; font-family: var(--display); font-size: 24px; font-weight: 700; color: var(--brand-d); letter-spacing: -.01em; }
+.school span { font-size: 13px; }
+
+/* ---------- visible real-screenshot boxes (Chea Dalin and Lim Viboth slides) ---------- */
+.cols.shotcols { grid-template-columns: 3fr 2fr; gap: 28px; align-items: start; }
+.cols.shotcols.star { grid-template-columns: 1.55fr 1fr; align-items: center; }
+.slot.shotbox { width: 100%; border: 2px dashed #9cbfe0; background: #f4f8fc; border-radius: 6px; }
+.slot.shotbox figcaption { display: flex; flex-direction: column; align-items: center; gap: 6px; max-width: 340px; padding: 16px; }
+.slot.shotbox .ico { width: 34px; height: 34px; stroke: var(--brand); margin-bottom: 2px; }
+.slot.shotbox figcaption b { font-family: var(--display); font-size: 17px; color: var(--brand-d); }
+.slot.shotbox figcaption span { font-size: 13.5px; color: var(--ink2); line-height: 1.45; }
+.slot.shotbox figcaption i { font-style: normal; font-size: 11.5px; color: var(--ink3); }
+.slot.shotbox:not(.filled):hover { border-color: var(--brand); background: var(--tint); }
+.slot.shotbox.filled { border: 1px solid var(--line); background: #fff; box-shadow: 0 6px 18px rgba(15,31,51,.08); }
+.slot.shotbox + .cards { margin-top: 20px; }
+.cards.compact { gap: 12px; }
+.cards.compact .card { padding: 14px 18px; gap: 4px; }
+.cards.compact .card .v { font-size: 34px; }
+.cards.compact .card p { font-size: 13.5px; line-height: 1.4; }
+table.t.compact { font-size: 13.5px; }
+table.t.compact td { padding: 6px 10px; }
+table.t.compact th { padding: 6px 10px; }
+.facts { display: flex; flex-direction: column; gap: 14px; }
+.loadorder { font-size: 14px; color: var(--ink2); line-height: 1.5; background: #f6f9fc; border-left: 3px solid var(--accent); padding: 10px 14px; }
+.loadorder b { color: var(--ink); }
+.chips { margin-top: 14px; }

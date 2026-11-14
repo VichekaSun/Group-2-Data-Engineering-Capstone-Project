@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="200" height="200" fill="#ece3f8"/>
+<circle cx="100" cy="100" r="78" fill="#fff" opacity=".55"/>
+
+<path d="M26 210 C26 162 58 140 100 140 C142 140 174 162 174 210 Z" fill="#6b3fa8"/>
+<path d="M84 141 L100 176 L116 141 Z" fill="#fff"/>
+<path d="M84 141 L100 176 L80 160 L72 146 Z" fill="#542f86"/><path d="M116 141 L100 176 L120 160 L128 146 Z" fill="#542f86"/>
+<path d="M95 150 L100 146 L105 150 L102 176 L100 179 L98 176 Z" fill="#542f86" opacity=".85"/>
+<rect x="88" y="112" width="24" height="32" rx="10" fill="#cc9566"/>
+<ellipse cx="66" cy="94" rx="6.5" ry="9.5" fill="#cc9566"/><ellipse cx="134" cy="94" rx="6.5" ry="9.5" fill="#e6b48a"/>
+
+<ellipse cx="100" cy="90" rx="34" ry="40" fill="#e6b48a"/>
+<path d="M65 88 C62 54 84 42 100 42 C118 42 139 54 135 88 C131 72 121 62 100 61 C81 61 69 71 65 88 Z" fill="#1b1b20"/>
+<path d="M79 82 Q86 78 93 81 M107 81 Q114 78 121 82" stroke="#1b1b20" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+<circle cx="87" cy="92" r="3.6" fill="#1f2a37"/><circle cx="113" cy="92" r="3.6" fill="#1f2a37"/>
+<circle cx="88.2" cy="90.8" r="1.1" fill="#fff"/><circle cx="114.2" cy="90.8" r="1.1" fill="#fff"/>
+<g stroke="#1f2a37" stroke-width="2.4" fill="rgba(255,255,255,.25)"><rect x="77" y="84" width="20" height="15" rx="5"/><rect x="103" y="84" width="20" height="15" rx="5"/><path d="M97 90 H103" fill="none"/></g>
+<path d="M98 96 Q100 102 103 101" stroke="#cc9566" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<path d="M89 109 Q100 118 111 109" stroke="#b5483a" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+<circle cx="79" cy="104" r="5" fill="#f08a7a" opacity=".32"/><circle cx="121" cy="104" r="5" fill="#f08a7a" opacity=".32"/>
+</g>
+<circle cx="160" cy="160" r="21" fill="#fff" stroke="#ece3f8" stroke-width="3"/>
+<g stroke="#6b3fa8" stroke-width="3.2" fill="none"><ellipse cx="160" cy="151" rx="10" ry="4"/><path d="M150 151 V169 C150 174 170 174 170 169 V151"/><path d="M150 160 C150 165 170 165 170 160"/></g>
+</svg>
