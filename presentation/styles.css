@@ -472,3 +472,14 @@ table.t.compact th { padding: 6px 10px; }
 .loadorder { font-size: 14px; color: var(--ink2); line-height: 1.5; background: #f6f9fc; border-left: 3px solid var(--accent); padding: 10px 14px; }
 .loadorder b { color: var(--ink); }
 .chips { margin-top: 14px; }
+/* star schema slide: real model screenshot is the main image */
+.cols.starcols { grid-template-columns: 1.75fr 1fr; gap: 28px; align-items: start; }
+.starkey { display: flex; flex-direction: column; gap: 9px; }
+.starkey .blk-h { margin-bottom: 4px; }
+.sk { display: flex; flex-direction: column; gap: 1px; padding: 7px 12px; background: #eef4fa; border-left: 3px solid #9cbfe0; }
+.sk.fact { background: var(--brand-d); border-left-color: #5b9bd5; }
+.sk b { font-family: "IBM Plex Mono", Consolas, monospace; font-size: 13.5px; color: var(--brand-d); }
+.sk.fact b { color: #fff; }
+.sk span { font-size: 12.5px; color: var(--ink2); line-height: 1.4; }
+.sk.fact span { color: #cfe2f3; }
+.sk-note { font-size: 12.5px; color: var(--ink3); line-height: 1.5; margin-top: 4px; }
