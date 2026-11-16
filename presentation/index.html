@@ -348,58 +348,20 @@
 <!-- 22 -->
 <section class="slide" data-label="Star schema">
   <header class="shead"><span class="kicker">02 · Warehouse</span><h2>Star schema: ANALYTICS</h2><span class="speaker">Lim Viboth</span></header>
-  <div class="cols shotcols star">
-    <svg class="diagram" viewBox="0 0 1152 470" role="img" aria-label="Star schema with two fact tables and four dimensions">
-    <g stroke="#7a8ba0" stroke-width="2">
-      <path d="M396 175 L506 95"/><path d="M756 175 L646 95"/>
-      <path d="M396 300 L506 370"/><path d="M756 300 L646 370"/>
-      <path d="M256 238 H216"/><path d="M896 238 H936"/>
-    </g>
-    <g font-size="13">
-      <!-- facts -->
-      <rect x="256" y="150" width="240" height="176" fill="#143654"/>
-      <text x="272" y="176" font-size="16" font-weight="700" fill="#fff">fact_attendance</text>
-      <text x="272" y="198" fill="#9fd4ff">one row per employee per day</text>
-      <text x="272" y="226" fill="#d6e4f2">attendance_id (PK)</text>
-      <text x="272" y="246" fill="#d6e4f2">date_key · employee_key</text>
-      <text x="272" y="266" fill="#d6e4f2">attendance_status_key</text>
-      <text x="272" y="286" fill="#d6e4f2">check_in · check_out</text>
-      <text x="272" y="306" fill="#d6e4f2">hours_worked</text>
-
-      <rect x="656" y="150" width="240" height="176" fill="#143654"/>
-      <text x="672" y="176" font-size="16" font-weight="700" fill="#fff">fact_performance</text>
-      <text x="672" y="198" fill="#9fd4ff">one row per employee per half-year</text>
-      <text x="672" y="226" fill="#d6e4f2">employee_key (PK)</text>
-      <text x="672" y="246" fill="#d6e4f2">review_period_key (PK)</text>
-      <text x="672" y="266" fill="#d6e4f2">review_date_key</text>
-      <text x="672" y="286" fill="#d6e4f2">score</text>
-      <text x="672" y="306" fill="#d6e4f2">reviewer_status</text>
-
-      <!-- dims -->
-      <rect x="456" y="10" width="240" height="90" fill="#e3edf7" stroke="#1f4e79"/>
-      <text x="472" y="36" font-size="15" font-weight="700" fill="#0f1f33">dim_date</text>
-      <text x="472" y="58" fill="#44576d">date_key YYYYMMDD</text>
-      <text x="472" y="78" fill="#44576d">month, quarter, half_year, weekend</text>
-
-      <rect x="456" y="370" width="240" height="90" fill="#e3edf7" stroke="#1f4e79"/>
-      <text x="472" y="396" font-size="15" font-weight="700" fill="#0f1f33">dim_employee</text>
-      <text x="472" y="418" fill="#44576d">department, division, job_title</text>
-      <text x="472" y="438" fill="#44576d">salary_band, status, hire_date</text>
-
-      <rect x="0" y="193" width="216" height="90" fill="#e3edf7" stroke="#1f4e79"/>
-      <text x="14" y="219" font-size="15" font-weight="700" fill="#0f1f33">dim_attendance_status</text>
-      <text x="14" y="241" fill="#44576d">Present, Late, Absent, Leave</text>
-      <text x="14" y="261" fill="#44576d">is_worked_day</text>
-
-      <rect x="936" y="193" width="216" height="90" fill="#e3edf7" stroke="#1f4e79"/>
-      <text x="950" y="219" font-size="15" font-weight="700" fill="#0f1f33">dim_review_period</text>
-      <text x="950" y="241" fill="#44576d">2025-H2, 2026-H1</text>
-      <text x="950" y="261" fill="#44576d">year, half</text>
-    </g>
-  </svg>
-    <figure class="slot shotbox" data-slot="lv-snowflake-schema" data-src="assets/shots/lv-snowflake-schema.png" style="height:440px"><img alt="Real screenshot: Snowflake: the HR_DB.ANALYTICS tables in the object browser, or an ER diagram"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake: the HR_DB.ANALYTICS tables in the object browser, or an ER diagram</span><i>save as assets/shots/lv-snowflake-schema.png, or click to insert</i></figcaption></figure>
+  <div class="cols starcols">
+    <figure class="slot shotbox" data-slot="lv-snowflake-schema" data-src="assets/shots/lv-snowflake-schema.png" style="height:500px"><img alt="Real screenshot: Star schema model: HR_DB.ANALYTICS tables and relationships"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Star schema model: HR_DB.ANALYTICS tables and relationships</span><i>save as assets/shots/lv-snowflake-schema.png, or click to insert</i></figcaption></figure>
+    <div class="starkey">
+      <div class="blk-h">Two facts, four dimensions</div>
+      <div class="sk fact"><b>fact_attendance</b><span>one row per employee per day · 12,917 rows</span></div>
+      <div class="sk fact"><b>fact_performance</b><span>one row per employee per half-year · 372 rows</span></div>
+      <div class="sk"><b>dim_date</b><span>date_key YYYYMMDD; month, quarter, half-year, weekend</span></div>
+      <div class="sk"><b>dim_employee</b><span>department, division, job title, salary band, status</span></div>
+      <div class="sk"><b>dim_attendance_status</b><span>Present, Late, Absent, Leave; is_worked_day</span></div>
+      <div class="sk"><b>dim_review_period</b><span>2025-H2, 2026-H1</span></div>
+      <p class="sk-note">Every dimension joins its facts one-to-many (1 → ∗). Measures such as Attendance Rate, Headcount and Avg Score sit on top of this model.</p>
+    </div>
   </div>
-  <div class="src">Source: <code>sql/create_star_schema.sql</code>. No personal columns are defined, so reports go no deeper than <code>employee_id</code>.</div>
+  <div class="src">Screenshot: the model view of <code>HR_DB.ANALYTICS</code>. Tables from <code>sql/create_star_schema.sql</code>. No personal columns are defined, so reports go no deeper than <code>employee_id</code>.</div>
 </section>
 
 <!-- 24 -->
@@ -555,7 +517,7 @@
       <div><span class="v">6</span><span class="k">dev → main</span></div>
       <div><span class="v">3</span><span class="k">Members</span></div>
     </div>
-    <figure class="slot" data-slot="shot-github"><img alt="GitHub pull requests screenshot"><figcaption><b>Screenshot: GitHub pull requests</b>click to insert</figcaption></figure>
+    <figure class="slot" data-slot="shot-github" data-src="assets/shots/sv-github-prs.png"><img alt="GitHub pull requests screenshot"><figcaption><b>Screenshot: GitHub pull requests</b>click to insert</figcaption></figure>
   </div>
   <div class="src">Source: <code>git log --merges</code> on <code>main</code> and <code>dev</code>; steps from <code>README.md</code> (Contributing). #6 and #16 were merged straight into <code>main</code>.</div>
 </section>
