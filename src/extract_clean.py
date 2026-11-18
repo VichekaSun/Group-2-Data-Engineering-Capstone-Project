@@ -1,5 +1,5 @@
 """
-Extract and clean step for the HR pipeline (Member A).
+Extract and clean step for the HR pipeline (Chea Dalin).
 
 Runs locally and inside Airflow: every path is built from this file's location,
 so nothing is hard-coded to one computer.

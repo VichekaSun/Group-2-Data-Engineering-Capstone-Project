@@ -1,24 +1,24 @@
 # Data Governance (draft)
 
-Status: draft, 9 Nov 2026. Owners are listed as Member A, B and C until the README names them.
+Status: draft, 9 Nov 2026.
 
 Every policy line carries a tag:
 
 - **Enforced**: the code or the configuration already does this.
-- **Agreed**: the team agreed to it in the project roadmap (`HR Pipeline Roadmap.html`), but nothing enforces it yet.
+- **Agreed**: the team agreed to it in the project roadmap ([HR_Pipeline_Roadmap.html](../02_Roadmap_and_Timeline/HR_Pipeline_Roadmap.html)), but nothing enforces it yet.
 - **Proposed**: the team must agree to it before it applies.
 
-## 1. Ownership, **Proposed** (until the README names the members)
+## 1. Ownership, **Agreed**
 
 | Asset | Owner | Responsibility |
 | --- | --- | --- |
-| `data/source/`, `src/generate_data.py` | Member A | Synthetic data and injected errors |
-| `data/raw/`, `data/clean/`, `data/rejects/`, `data/logs/` | Member A | Ingest, cleaning, quality checks |
-| `data/reference/departments.csv` | Member A | The official department and division list. It changes only through a PR, and the `Unknown,Unknown` row must stay, or employees with a blank department are rejected. **Proposed** |
-| Warehouse schema, load code, `docker-compose.yml` | Member B | The `ANALYTICS` star schema and the infrastructure |
-| Airflow DAG | Member A (extract, clean, checks), Member B (load tasks) | Runs the pipeline |
-| Report views, Power BI | Member C | The dashboard and its measures |
-| `docs/governance.md`, `docs/data_dictionary.md` | Member C | Keeping the documents in line with the code |
+| `data/source/`, `src/generate_data.py` | Chea Dalin | Synthetic data and injected errors |
+| `data/raw/`, `data/clean/`, `data/rejects/`, `data/logs/` | Chea Dalin | Ingest, cleaning, quality checks |
+| `data/reference/departments.csv` | Chea Dalin | The official department and division list. It changes only through a PR, and the `Unknown,Unknown` row must stay, or employees with a blank department are rejected. **Proposed** |
+| Warehouse schema, load code, `docker-compose.yml` | Lim Viboth | The `ANALYTICS` star schema and the infrastructure |
+| Airflow DAG | Chea Dalin (extract, clean, checks), Lim Viboth (load tasks) | Runs the pipeline |
+| Report views, Power BI | Sun Vicheka | The dashboard and its measures |
+| `deliverables/01_Documentation/governance.md`, `deliverables/01_Documentation/data_dictionary.md` | Sun Vicheka | Keeping the documents in line with the code |
 
 ## 2. Data lineage
 
@@ -137,7 +137,7 @@ These come from the README's dashboard section.
 ## 8. Change management and incidents
 
 - Branch from `dev`, open a PR into `dev`, get a review from another member, and merge. Merge `dev` into `main` by PR. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
-- A schema change, a new rule or a change to the reference data must update `docs/data_dictionary.md` and this document in the same PR. **Proposed**
+- A schema change, a new rule or a change to the reference data must update `deliverables/01_Documentation/data_dictionary.md` and this document in the same PR. **Proposed**
 - A FAIL in Airflow is fixed by the owner of that dataset on the same day. **Proposed**
 - Anyone stuck for more than half a day tells the group chat. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
 
