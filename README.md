@@ -10,7 +10,7 @@ This pipeline takes synthetic HR data through five steps: ingest, clean, quality
 |---|---|---|
 | Chea&nbsp;Dalin | Data and Quality | `src/generate_data.py`, `src/extract_clean.py`, `src/quality_checks.py`, `dag/hr_pipeline_dag.py`, `notebooks/profiling.ipynb` |
 | Lim&nbsp;Viboth | Warehouse and Airflow | `docker-compose.yml`, `sql/create_star_schema.sql`, `dag/hr_pipeline.py`, load scripts (TBD) |
-| Sun&nbsp;Vicheka | Analytics and Documents | `README.md`, `docs/`, `sql/report_views.sql`, `tests/test_report_views.py`, `powerbi/`, submission |
+| Sun&nbsp;Vicheka | Analytics and Documents | `README.md`, `deliverables/` (documents, roadmap, slides, Power BI), `sql/report_views.sql`, `tests/test_report_views.py`, submission |
 
 ## Problem
 
@@ -87,7 +87,7 @@ Latest run (`data/logs/quality_report.json`, 2026-11-08): **19 PASS, 1 WARN, 0 F
 | attendance | 13,040 | 40 | 83 | 12,917 |
 | performance | 410 | 10 | 28 | 372 |
 
-Rules, reject reasons and retention: [docs/governance.md](docs/governance.md).
+Rules, reject reasons and retention: [governance.md](deliverables/01_documentation/governance.md).
 
 ## Warehouse
 
@@ -124,16 +124,18 @@ Definitions:
 - **Headcount** counts employees whose `employment_status` is Active or On Leave. Resigned employees are excluded.
 - **Attendance rate** is (Present + Late) / all attendance rows.
 
-The pages read from the views in `sql/report_views.sql`. Run `pip install duckdb sqlglot` and then `tests/test_report_views.py` to check those views. Page layout and measures are in [docs/dashboard_plan.md](docs/dashboard_plan.md).
+The pages read from the views in `sql/report_views.sql`. Run `pip install duckdb sqlglot` and then `tests/test_report_views.py` to check those views. Page layout and measures are in `dashboard_plan.md` (not in the repo yet). The report file and a PDF export are in [deliverables/05_analytics_powerbi/](deliverables/05_analytics_powerbi/).
 
 ## Documentation
 
 | Document | Purpose |
 |---|---|
-| [docs/data_dictionary.md](docs/data_dictionary.md) | Tables, columns, types and rules |
-| [docs/governance.md](docs/governance.md) | Access roles, quality rules, retention, privacy |
-| [docs/dashboard_plan.md](docs/dashboard_plan.md) | Dashboard pages, measures and report views |
-| [sql/report_views.sql](sql/report_views.sql) | Views that feed Power BI |
+| [data_dictionary.md](deliverables/01_documentation/data_dictionary.md) | Tables, columns, types and rules |
+| [governance.md](deliverables/01_documentation/governance.md) | Access roles, quality rules, retention, privacy |
+| [hr_pipeline_roadmap.html](deliverables/02_roadmap_and_timeline/hr_pipeline_roadmap.html) | Roadmap, timeline, phases and handovers |
+| [Slide deck](deliverables/03_slide_presentation/index.html) | Presentation; open `index.html` in a browser |
+| [Video](deliverables/04_video_presentation/) | Video presentation |
+| [Power BI](deliverables/05_analytics_powerbi/) | `hr_employee_analytics.pbix` and a PDF export of its pages |
 
 ## Repository layout
 
@@ -148,9 +150,13 @@ data/
   rejects/                  Failed rows with reject_reason, one file per dataset
   logs/                     Cleaning logs per dataset, quality_report.json
   reference/                departments.csv (official departments and divisions)
-docs/                       data_dictionary.md, governance.md, dashboard_plan.md
+deliverables/
+  01_documentation/         data_dictionary.md, governance.md
+  02_roadmap_and_timeline/  hr_pipeline_roadmap.html
+  03_slide_presentation/    index.html (slide deck), app.js, styles.css, assets/
+  04_video_presentation/    Video recordings (Git LFS)
+  05_analytics_powerbi/     hr_employee_analytics.pbix and .pdf
 notebooks/profiling.ipynb   Data profiling notes
-powerbi/                    Dashboard file and screenshots/ (planned)
 sql/
   create_star_schema.sql    Star schema tables (Snowflake syntax)
   report_views.sql          Report views for Power BI
@@ -198,9 +204,9 @@ The project runs from 3 to 18 Nov 2026. Status as of 9 Nov 2026:
 | Dashboard plan | Sun&nbsp;Vicheka | Not in roadmap | Done |
 | Connect Power BI to warehouse | Sun&nbsp;Vicheka | 12-13 Nov | Done |
 | Power BI dashboard | Sun&nbsp;Vicheka | 13-15 Nov | Done |
-| Combine slides, plan video | Sun&nbsp;Vicheka | 16 Nov | Done |
+| Final slide deck, plan video | Sun&nbsp;Vicheka | 16 Nov | Done |
 | PR reviews and fixes | Everyone | 13-15 Nov | Done |
-| Own slides | Everyone | 15 Nov | Done |
+| Slides for every part | Sun&nbsp;Vicheka | 15 Nov | Done |
 | Record video | Everyone | 17 Nov | Done |
 | Submit | Sun&nbsp;Vicheka | 18 Nov | Done |
 
@@ -208,7 +214,10 @@ The project runs from 3 to 18 Nov 2026. Status as of 9 Nov 2026:
 
 Sun Vicheka submits by Wednesday 18 November 2026:
 
-- GitHub source code
-- Slide presentation
-- 15-20 minute video with demo
-- Group number and member names
+- GitHub source code: this repository
+- Documentation: [deliverables/01_documentation/](deliverables/01_documentation/)
+- Roadmap and timeline: [deliverables/02_roadmap_and_timeline/](deliverables/02_roadmap_and_timeline/)
+- Slide presentation: [deliverables/03_slide_presentation/](deliverables/03_slide_presentation/)
+- 15-20 minute video with demo: [deliverables/04_video_presentation/](deliverables/04_video_presentation/)
+- Power BI dashboard: [deliverables/05_analytics_powerbi/](deliverables/05_analytics_powerbi/)
+- Group number and member names: Group 2, Chea Dalin, Lim Viboth, Sun Vicheka
