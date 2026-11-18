@@ -87,7 +87,7 @@ Latest run (`data/logs/quality_report.json`, 2026-11-08): **19 PASS, 1 WARN, 0 F
 | attendance | 13,040 | 40 | 83 | 12,917 |
 | performance | 410 | 10 | 28 | 372 |
 
-Rules, reject reasons and retention: [governance.md](deliverables/01_Documentation/governance.md).
+Rules, reject reasons and retention: [governance.md](deliverables/01_documentation/governance.md).
 
 ## Warehouse
 
@@ -124,18 +124,18 @@ Definitions:
 - **Headcount** counts employees whose `employment_status` is Active or On Leave. Resigned employees are excluded.
 - **Attendance rate** is (Present + Late) / all attendance rows.
 
-The pages read from the views in `sql/report_views.sql`. Run `pip install duckdb sqlglot` and then `tests/test_report_views.py` to check those views. Page layout and measures are in `dashboard_plan.md` (not in the repo yet). The report file and a PDF export are in [deliverables/05_Analytics_PowerBI/](deliverables/05_Analytics_PowerBI/).
+The pages read from the views in `sql/report_views.sql`. Run `pip install duckdb sqlglot` and then `tests/test_report_views.py` to check those views. Page layout and measures are in `dashboard_plan.md` (not in the repo yet). The report file and a PDF export are in [deliverables/05_analytics_powerbi/](deliverables/05_analytics_powerbi/).
 
 ## Documentation
 
 | Document | Purpose |
 |---|---|
-| [data_dictionary.md](deliverables/01_Documentation/data_dictionary.md) | Tables, columns, types and rules |
-| [governance.md](deliverables/01_Documentation/governance.md) | Access roles, quality rules, retention, privacy |
-| [HR_Pipeline_Roadmap.html](deliverables/02_Roadmap_and_Timeline/HR_Pipeline_Roadmap.html) | Roadmap, timeline, phases and handovers |
-| [Slide deck](deliverables/03_Slide_Presentation/index.html) | Presentation; open `index.html` in a browser |
-| [Video](deliverables/04_Video_Presentation/) | Video presentation |
-| [Power BI](deliverables/05_Analytics_PowerBI/) | `HR Employee Analytics.pbix` and a PDF export of its pages |
+| [data_dictionary.md](deliverables/01_documentation/data_dictionary.md) | Tables, columns, types and rules |
+| [governance.md](deliverables/01_documentation/governance.md) | Access roles, quality rules, retention, privacy |
+| [hr_pipeline_roadmap.html](deliverables/02_roadmap_and_timeline/hr_pipeline_roadmap.html) | Roadmap, timeline, phases and handovers |
+| [Slide deck](deliverables/03_slide_presentation/index.html) | Presentation; open `index.html` in a browser |
+| [Video](deliverables/04_video_presentation/) | Video presentation |
+| [Power BI](deliverables/05_analytics_powerbi/) | `hr_employee_analytics.pbix` and a PDF export of its pages |
 
 ## Repository layout
 
@@ -151,11 +151,11 @@ data/
   logs/                     Cleaning logs per dataset, quality_report.json
   reference/                departments.csv (official departments and divisions)
 deliverables/
-  01_Documentation/         data_dictionary.md, governance.md
-  02_Roadmap_and_Timeline/  HR_Pipeline_Roadmap.html
-  03_Slide_Presentation/    index.html (slide deck), app.js, styles.css, assets/
-  04_Video_Presentation/    Video recordings (Git LFS)
-  05_Analytics_PowerBI/     HR Employee Analytics.pbix and .pdf
+  01_documentation/         data_dictionary.md, governance.md
+  02_roadmap_and_timeline/  hr_pipeline_roadmap.html
+  03_slide_presentation/    index.html (slide deck), app.js, styles.css, assets/
+  04_video_presentation/    Video recordings (Git LFS)
+  05_analytics_powerbi/     hr_employee_analytics.pbix and .pdf
 notebooks/profiling.ipynb   Data profiling notes
 sql/
   create_star_schema.sql    Star schema tables (Snowflake syntax)
@@ -215,9 +215,9 @@ The project runs from 3 to 18 Nov 2026. Status as of 9 Nov 2026:
 Sun Vicheka submits by Wednesday 18 November 2026:
 
 - GitHub source code: this repository
-- Documentation: [deliverables/01_Documentation/](deliverables/01_Documentation/)
-- Roadmap and timeline: [deliverables/02_Roadmap_and_Timeline/](deliverables/02_Roadmap_and_Timeline/)
-- Slide presentation: [deliverables/03_Slide_Presentation/](deliverables/03_Slide_Presentation/)
-- 15-20 minute video with demo: [deliverables/04_Video_Presentation/](deliverables/04_Video_Presentation/)
-- Power BI dashboard: [deliverables/05_Analytics_PowerBI/](deliverables/05_Analytics_PowerBI/)
+- Documentation: [deliverables/01_documentation/](deliverables/01_documentation/)
+- Roadmap and timeline: [deliverables/02_roadmap_and_timeline/](deliverables/02_roadmap_and_timeline/)
+- Slide presentation: [deliverables/03_slide_presentation/](deliverables/03_slide_presentation/)
+- 15-20 minute video with demo: [deliverables/04_video_presentation/](deliverables/04_video_presentation/)
+- Power BI dashboard: [deliverables/05_analytics_powerbi/](deliverables/05_analytics_powerbi/)
 - Group number and member names: Group 2, Chea Dalin, Lim Viboth, Sun Vicheka
