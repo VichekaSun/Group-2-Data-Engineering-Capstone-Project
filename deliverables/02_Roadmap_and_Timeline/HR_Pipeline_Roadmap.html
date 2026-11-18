@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Pipeline Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap">
+<style>
+/* Slide-deck layout: white sidebar, each page a white "slide" on a cool grey desk, flat roadmap colours */
+:root {
+  color-scheme: light;
+  --desk: #e9edf2; --slide: #ffffff; --tint: #f4f6f9; --rule: #e1e5eb; --wire: #c9d0d9;
+  --navy: #14315f; --ink: #2d3540; --muted: #7a838f;
+  --coral: #f0654a; --orange: #f7a325; --green: #43c47e; --teal: #26b3d3; --blue: #3c7be6; --purple: #6a47a6; --sky: #8db4f2;
+  --head: "Montserrat", "Segoe UI", Arial, sans-serif;
+  --text: "Open Sans", "Segoe UI", Arial, sans-serif;
+}
+* { box-sizing: border-box }
+html, body { margin: 0 }
+body { background: var(--desk); color: var(--ink); font: 15px/1.55 var(--text); font-variant-numeric: tabular-nums; }
+h1, h2, h3 { font-family: var(--head); margin: 0; text-wrap: balance; }
+p { margin: 0 }
+
+/* owners: A green, B blue, C orange, everyone purple */
+.A { --m: var(--green) } .B { --m: var(--blue) } .C { --m: var(--orange) } .ALL { --m: var(--purple) }
+.p1 { --m: var(--coral) } .p2 { --m: var(--orange) } .p3 { --m: var(--green) } .p4 { --m: var(--teal) } .p5 { --m: var(--blue) } .p6 { --m: var(--purple) } .p7 { --m: var(--sky) }
+.who { display: inline-grid; place-items: center; min-width: 26px; height: 22px; padding: 0 7px; border-radius: 11px; background: var(--m); color: #fff; font: 700 0.72rem/1 var(--head); }
+
+/* ---------- shell ---------- */
+.shell { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh; }
+.side { background: var(--slide); border-right: 1px solid var(--rule); position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column; padding: 26px 0 20px; }
+.brand { padding: 0 22px 18px; }
+.brand p { font: 700 0.68rem/1.3 var(--head); letter-spacing: 0.16em; text-transform: uppercase; color: var(--coral); }
+.brand h1 { font-size: 1.3rem; font-weight: 800; line-height: 1.15; color: var(--navy); margin-top: 6px; text-transform: uppercase; }
+.side nav { display: grid; gap: 2px; padding: 0 10px; }
+.side nav a { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: center; color: var(--ink); text-decoration: none; font: 600 0.88rem/1.2 var(--head); padding: 9px 12px; border-radius: 6px; border-left: 4px solid transparent; }
+.side nav a span { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--m); color: #fff; font-size: 0.8rem; }
+.side nav a:hover, .side nav a:focus-visible { background: var(--tint); outline: none; }
+.side nav a[aria-current="page"] { background: var(--tint); border-left-color: var(--m); color: var(--navy); }
+.side dl { margin: auto 0 0; padding: 18px 22px 0; display: grid; gap: 12px; }
+.side dt { font: 700 0.66rem/1.2 var(--head); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.side dd { margin: 3px 0 0; font-weight: 600; color: var(--navy); }
+.days { background: var(--coral); color: #fff; border-radius: 8px; padding: 10px 12px; display: flex; align-items: baseline; gap: 8px; }
+.days b { font: 800 1.8rem/1 var(--head); }
+.days span { font-size: 0.82rem; }
+
+main { padding: 28px clamp(16px, 3vw, 36px) 40px; }
+.slide { background: var(--slide); border-radius: 4px; box-shadow: 0 1px 2px rgba(20, 49, 95, 0.08); padding: 34px clamp(16px, 3.5vw, 44px) 28px; max-width: 1180px; margin: 0 auto; }
+.title { text-align: center; margin-bottom: 30px; }
+.title h2 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.02em; }
+.title p { font: 600 0.7rem/1.4 var(--head); letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.lead-text { max-width: 74ch; margin: -14px auto 26px; text-align: center; color: var(--muted); }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--rule); }
+.pager a { color: var(--navy); text-decoration: none; font: 700 0.82rem/1 var(--head); padding: 10px 16px; border-radius: 20px; background: var(--tint); }
+.pager a:hover, .pager a:focus-visible { background: var(--navy); color: #fff; outline: none; }
+.pager a.next { margin-left: auto; }
+
+/* ---------- 1 org chart ---------- */
+.org { display: flex; flex-direction: column; align-items: center; }
+.root { background: var(--navy); color: #fff; padding: 14px 30px; border-radius: 6px; text-align: center; position: relative; }
+.root h3 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.02em; }
+.root p { font-size: 0.82rem; opacity: 0.8; margin-top: 2px; }
+.root::after { content: ""; position: absolute; left: 50%; bottom: -26px; width: 2px; height: 26px; background: var(--wire); }
+.branches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; width: 100%; margin-top: 26px; }
+.branch { position: relative; padding-top: 26px; min-width: 0; }
+.branch::before { content: ""; position: absolute; top: 0; left: -13px; right: -13px; height: 2px; background: var(--wire); }
+.branch:first-child::before { left: 50% } .branch:last-child::before { right: 50% }
+.branch::after { content: ""; position: absolute; top: 0; left: 50%; width: 2px; height: 26px; background: var(--wire); }
+.lead { background: var(--m); color: #fff; border-radius: 6px; text-align: center; overflow: hidden; }
+.lead .top { padding: 14px 12px 12px; }
+.lead .letter { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--m); font: 800 1.1rem/1 var(--head); }
+.lead h3 { font-size: 1rem; text-transform: uppercase; margin-top: 8px; }
+.lead .band { background: rgba(255, 255, 255, 0.22); font-size: 0.8rem; padding: 6px 10px; }
+.nodes { list-style: none; margin: 0; padding: 14px 0 0 24px; position: relative; display: grid; gap: 9px; }
+.nodes::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 18px; width: 2px; background: var(--m); opacity: 0.35; }
+.nodes li { position: relative; background: var(--slide); border: 1px solid var(--rule); border-radius: 6px; padding: 8px 10px; font-size: 0.88rem; line-height: 1.35; }
+.nodes li::before { content: ""; position: absolute; left: -19px; top: 13px; width: 10px; height: 10px; border-radius: 50%; background: var(--m); }
+.nodes li small { display: block; font: 700 0.72rem/1.3 var(--head); color: var(--m); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+.everyone { width: 100%; margin-top: 24px; display: grid; grid-template-columns: auto repeat(3, minmax(0, 1fr)); gap: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); }
+.everyone > * { padding: 12px 16px; font-size: 0.88rem; }
+.everyone strong { background: var(--purple); color: #fff; font: 800 0.85rem/1.2 var(--head); text-transform: uppercase; display: grid; place-items: center; }
+.everyone span { border-left: 1px solid var(--rule); }
+.everyone span b { display: block; color: var(--purple); font-family: var(--head); font-size: 0.8rem; text-transform: uppercase; }
+
+/* ---------- 2 pipeline: staircase ---------- */
+.stairs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; align-items: end; }
+.step { display: flex; flex-direction: column; gap: 10px; }
+.step .txt b { display: block; font: 700 0.95rem/1.25 var(--head); color: var(--navy); }
+.step .txt p { font-size: 0.84rem; color: var(--muted); margin-top: 3px; }
+.step .bar { height: var(--h); background: var(--m); border-radius: 6px 6px 0 0; position: relative; display: flex; align-items: flex-start; justify-content: space-between; padding: 10px 12px; color: #fff; }
+.step .bar .n { font: 800 1.5rem/1 var(--head); }
+.step .bar .who { background: #fff; color: var(--m); }
+.step .bar::after { content: ""; position: absolute; right: -14px; top: 12px; border: 8px solid transparent; border-left-color: var(--wire); }
+.step:last-child .bar::after { display: none; }
+.base { height: 6px; background: var(--wire); border-radius: 3px; }
+.dag { margin-top: 26px; text-align: center; }
+.dag code { display: inline-block; max-width: 100%; overflow-x: auto; white-space: nowrap; font: 0.82rem/1.5 Consolas, "Courier New", monospace; background: var(--tint); padding: 10px 16px; border-radius: 20px; }
+.dag i { font-style: normal; color: var(--coral); font-weight: 700; }
+.etl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+.etl div { border-top: 4px solid var(--m); background: var(--tint); padding: 14px 16px; border-radius: 0 0 6px 6px; font-size: 0.88rem; }
+.etl b { display: block; font-family: var(--head); color: var(--navy); margin-bottom: 4px; }
+
+/* ---------- 3 guideline: diamonds ---------- */
+.g-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; margin-bottom: 30px; }
+.g-top > div { background: var(--tint); border-radius: 6px; padding: 16px 18px; }
+.g-top h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--coral); margin-bottom: 6px; letter-spacing: 0.04em; }
+.g-top ul { margin: 0; padding-left: 18px; }
+.g-top li + li { margin-top: 3px; }
+.diamonds { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 30px 18px; position: relative; }
+.dia { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.dia .d { width: 54px; height: 54px; background: var(--m); transform: rotate(45deg); border-radius: 6px; display: grid; place-items: center; margin: 6px 0 4px; }
+.dia .d span { transform: rotate(-45deg); color: #fff; font: 800 1.15rem/1 var(--head); }
+.dia b { font: 700 0.92rem/1.25 var(--head); color: var(--navy); }
+.dia p { font-size: 0.82rem; color: var(--muted); }
+.specs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 34px; }
+.spec { border: 2px solid var(--m); border-radius: 6px; overflow: hidden; font-size: 0.86rem; min-width: 0; }
+.spec h3 { background: var(--m); color: #fff; font-size: 0.82rem; text-transform: uppercase; padding: 8px 12px; letter-spacing: 0.03em; }
+.spec .body { padding: 10px 12px; }
+.spec ul { margin: 0; padding-left: 16px; }
+.spec li + li { margin-top: 3px; }
+.spec pre { margin: 0 0 6px; font: 0.78rem/1.5 Consolas, "Courier New", monospace; overflow-x: auto; }
+
+/* ---------- 4 gantt ---------- */
+.legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-bottom: 14px; font: 600 0.8rem/1 var(--head); color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend span::before { content: ""; width: 16px; height: 10px; border-radius: 5px; background: var(--m); }
+.legend .ms::before { width: 10px; height: 10px; transform: rotate(45deg); border-radius: 2px; background: var(--navy); }
+.gantt-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; }
+.gantt { display: grid; grid-template-columns: 250px repeat(16, minmax(36px, 1fr)); min-width: 860px; position: relative; font-size: 0.85rem; }
+.gantt .hd { background: var(--navy); color: #c8d4e6; padding: 7px 0; text-align: center; font-size: 0.68rem; line-height: 1.2; }
+.gantt .hd b { display: block; font: 700 0.88rem/1.2 var(--head); color: #fff; }
+.gantt .hd.we { background: #213f72; }
+.gantt .hd.first { text-align: left; padding-left: 12px; color: #fff; font: 700 0.8rem/1 var(--head); text-transform: uppercase; display: flex; align-items: center; }
+.gantt .ph { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--rule); background: var(--tint); padding: 0 12px 0 0; }
+.gantt .ph span { background: var(--m); color: #fff; font: 700 0.78rem/1 var(--head); text-transform: uppercase; padding: 8px 18px 8px 12px; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%); }
+.gantt .ph em { font-style: normal; font-size: 0.78rem; color: var(--muted); font-weight: 600; }
+.gantt .lbl { grid-column: 1; padding: 6px 12px; display: flex; gap: 8px; align-items: center; min-width: 0; border-top: 1px dotted var(--rule); }
+.gantt .lbl span.t { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gantt .bar { align-self: center; height: 16px; border-radius: 8px; background: var(--m); margin: 0 3px; }
+.gantt .bar.ms { background: none; display: grid; place-items: center; }
+.gantt .bar.ms::before { content: ""; width: 12px; height: 12px; background: var(--navy); transform: rotate(45deg); border-radius: 2px; }
+.today { position: absolute; top: 0; bottom: 0; width: 0; border-left: 2px dashed var(--coral); pointer-events: none; }
+.today::after { content: "Today"; position: absolute; top: 46px; left: 4px; font: 700 0.66rem/1 var(--head); color: #fff; background: var(--coral); padding: 3px 5px; border-radius: 3px; }
+
+/* ---------- 5 phases: pins on a road ---------- */
+.road { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; padding-bottom: 6px; margin-bottom: 30px; }
+.road::after { content: ""; position: absolute; left: 0; right: 0; bottom: 64px; height: 10px; background: #dcdfe4; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 10px 50%); }
+.pin { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
+.pin .head { width: 54px; height: 54px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--m); display: grid; place-items: center; }
+.pin .head span { transform: rotate(45deg); width: 32px; height: 32px; border-radius: 50%; background: #fff; color: var(--m); display: grid; place-items: center; font: 800 1rem/1 var(--head); }
+.pin .stem { width: 2px; height: 22px; background: var(--m); margin-top: 4px; }
+.pin .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--m); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--m); }
+.pin b { font: 700 0.84rem/1.2 var(--head); color: var(--navy); margin-top: 14px; }
+.pin small { font: 600 0.74rem/1.2 var(--head); color: var(--m); margin-top: 3px; }
+.phases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.phase { border: 2px solid var(--m); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.phase .cap { background: var(--m); color: #fff; padding: 9px 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.phase .cap h3 { font-size: 0.9rem; text-transform: uppercase; }
+.phase .cap small { font-size: 0.76rem; white-space: nowrap; opacity: 0.9; }
+.phase ul { list-style: none; margin: 0; padding: 12px 14px; display: grid; gap: 7px; font-size: 0.88rem; }
+.phase li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 8px; align-items: start; line-height: 1.35; }
+.phase .exit { margin-top: auto; font-size: 0.82rem; color: var(--ink); padding: 9px 14px; border-top: 1px dashed var(--wire); }
+.phase .exit b { color: var(--m); font-family: var(--head); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.06em; margin-right: 4px; }
+
+/* ---------- 6 handover ---------- */
+.ho-scroll { overflow-x: auto; border-radius: 6px; border: 1px solid var(--rule); }
+table.ho { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 0.88rem; }
+.ho th { text-align: left; font: 700 0.72rem/1 var(--head); letter-spacing: 0.08em; text-transform: uppercase; color: #fff; padding: 11px 14px; background: var(--navy); }
+.ho td { padding: 10px 14px; border-top: 1px solid var(--rule); vertical-align: middle; }
+.ho tr:nth-child(even) td { background: var(--tint); }
+.ho td.when { white-space: nowrap; font: 700 0.82rem/1.2 var(--head); color: var(--navy); }
+.ho td.flow { white-space: nowrap; }
+.ho .arrow { color: var(--coral); margin: 0 6px; font-weight: 700; }
+.members { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 26px; }
+.mcard { border: 2px solid var(--m); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; min-width: 0; }
+.mcard .cap { background: var(--m); color: #fff; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+.mcard .cap span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: #fff; color: var(--m); font: 800 0.95rem/1 var(--head); }
+.mcard .cap h3 { font-size: 0.92rem; text-transform: uppercase; }
+.mcard .body { padding: 12px 14px; display: grid; gap: 12px; }
+.mcard .k { font: 700 0.7rem/1 var(--head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--m); margin-bottom: 5px; }
+.mcard ul { margin: 0; padding-left: 18px; font-size: 0.86rem; }
+.mcard li + li { margin-top: 2px; }
+.mcard .io { display: grid; gap: 6px; font-size: 0.84rem; }
+.mcard .io p { background: var(--tint); border-radius: 6px; padding: 7px 10px; }
+.mcard .io b { font-family: var(--head); color: var(--m); margin-right: 4px; }
+
+/* ---------- 7 submission: hexagon banners ---------- */
+.hexes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.hex { background: var(--m); color: #fff; text-align: center; clip-path: polygon(50% 0, 100% 10%, 100% 88%, 50% 100%, 0 88%, 0 10%); padding: 34px 16px 40px; display: flex; flex-direction: column; gap: 10px; min-height: 230px; }
+.hex .n { font: 800 2rem/1 var(--head); }
+.hex b { font: 800 0.95rem/1.25 var(--head); text-transform: uppercase; }
+.hex p { font-size: 0.84rem; line-height: 1.4; }
+.hex .band { margin: auto -16px 0; background: rgba(255, 255, 255, 0.24); padding: 7px 10px; font: 700 0.74rem/1.2 var(--head); text-transform: uppercase; letter-spacing: 0.05em; }
+.video { margin-top: 26px; display: flex; border-radius: 6px; overflow: hidden; font: 700 0.78rem/1.2 var(--head); color: #fff; text-align: center; }
+.video div { padding: 10px 6px; background: var(--m); }
+footer { text-align: center; padding: 18px 16px 30px; color: var(--muted); font-size: 0.8rem; }
+
+@media (max-width: 900px) {
+  .shell { grid-template-columns: minmax(0, 1fr); }
+  .side { position: sticky; height: auto; padding: 12px 0 8px; z-index: 5; border-right: 0; border-bottom: 1px solid var(--rule); }
+  .brand { padding: 0 16px 8px; } .brand h1 { font-size: 1.05rem; }
+  .side nav { display: flex; overflow-x: auto; padding: 0 8px; }
+  .side nav a { display: flex; white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; border-radius: 0; }
+  .side nav a[aria-current="page"] { border-bottom-color: var(--m); }
+  .side dl { display: none; }
+  main { padding: 14px 10px 24px; }
+  .branches, .members, .phases, .g-top, .etl { grid-template-columns: minmax(0, 1fr); }
+  .branch::before, .branch::after, .root::after { display: none; }
+  .branch { padding-top: 0; } .branches { margin-top: 16px; }
+  .everyone { grid-template-columns: minmax(0, 1fr); } .everyone span { border-left: 0; border-top: 1px solid var(--rule); }
+  .stairs { grid-template-columns: minmax(0, 1fr); } .step .bar { height: auto; border-radius: 6px; } .step .bar::after, .base { display: none; }
+  .step { flex-direction: column-reverse; }
+  .diamonds, .specs, .hexes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .road { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 20px; } .road::after { display: none; }
+}
+@media (max-width: 480px) { .diamonds, .specs, .hexes { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="side">
+  <div class="brand">
+    <p>Data Engineering · Group 2</p>
+    <h1>HR Employee Data Pipeline</h1>
+  </div>
+  <nav aria-label="Pages" id="sideNav">
+    <a class="p1" href="#roadmap"><span>1</span>Project roadmap</a>
+    <a class="p2" href="#pipeline"><span>2</span>Data pipeline</a>
+    <a class="p3" href="#guideline"><span>3</span>Project guideline</a>
+    <a class="p4" href="#timeline"><span>4</span>Timeline</a>
+    <a class="p5" href="#phases"><span>5</span>Phases &amp; tasks</a>
+    <a class="p6" href="#handover"><span>6</span>Task handover</a>
+    <a class="p7" href="#submit"><span>7</span>Submission</a>
+  </nav>
+  <dl>
+    <div><dt>Stack</dt><dd>Docker · PostgreSQL · Airflow · Power BI</dd></div>
+    <div><dt>Start → Deadline</dt><dd>3 Nov → 18 Nov 2026</dd></div>
+    <div class="days"><b id="daysLeft">15</b><span id="leftLabel">days left</span></div>
+  </dl>
+</aside>
+
+<div>
+<main>
+<!-- 1 ROADMAP -->
+<section id="roadmap"><div class="slide">
+  <div class="title"><h2>Project roadmap</h2><p>Who owns what · Group 2</p></div>
+  <p class="lead-text">Each member owns one track from start to finish. Each date is the last day a task can finish without blocking someone else.</p>
+  <div class="org">
+    <div class="root"><h3>Group 2 · HR Employee Pipeline</h3><p>Repo, slides and a 15–20 minute video by 18 Nov</p></div>
+    <div class="branches">
+      <div class="branch A">
+        <div class="lead"><div class="top"><span class="letter">CD</span><h3>Chea Dalin · Data &amp; Quality</h3></div><div class="band">Source data · data lake · cleaning · checks</div></div>
+        <ul class="nodes">
+          <li>Create synthetic HR data: employees, attendance, performance<small>by Fri 6 Nov</small></li>
+          <li>Set up raw data lake folders<small>by Sat 7 Nov</small></li>
+          <li>Profile and clean: duplicates, missing values, wrong labels, invalid dates<small>by Sun 8 Nov</small></li>
+          <li>Extract and clean code for Airflow<small>by Tue 10 Nov</small></li>
+          <li>Data quality checks<small>by Wed 11 Nov</small></li>
+        </ul>
+      </div>
+      <div class="branch B">
+        <div class="lead"><div class="top"><span class="letter">LV</span><h3>Lim Viboth · Warehouse &amp; Airflow</h3></div><div class="band">Platform · star schema · loading · DAG</div></div>
+        <ul class="nodes">
+          <li>Docker, PostgreSQL and Airflow running<small>by Thu 5 Nov</small></li>
+          <li>Design the star schema and create the tables<small>by Sun 8 Nov</small></li>
+          <li>Load scripts: dimensions, then facts<small>by Wed 11 Nov</small></li>
+          <li>Airflow DAG with a successful run<small>by Fri 13 Nov</small></li>
+        </ul>
+      </div>
+      <div class="branch C">
+        <div class="lead"><div class="top"><span class="letter">SV</span><h3>Sun Vicheka · Analytics &amp; Documents</h3></div><div class="band">Repo · governance · dashboard · package</div></div>
+        <ul class="nodes">
+          <li>GitHub repo, task board and README<small>by Wed 4 Nov</small></li>
+          <li>Data dictionary<small>by Sun 8 Nov</small></li>
+          <li>Governance document: owners, quality rules, access roles, retention, privacy<small>by Wed 11 Nov</small></li>
+          <li>Power BI dashboard<small>by Sun 15 Nov</small></li>
+          <li>Build the slide deck and plan the video<small>by Mon 16 Nov</small></li>
+        </ul>
+      </div>
+    </div>
+    <div class="everyone">
+      <strong>Everyone</strong>
+      <span><b>Screenshots</b>Your own part, for the deck · 15 Nov</span>
+      <span><b>Video</b>Present your part · 17 Nov</span>
+      <span><b>Review</b>Each other's pull requests · throughout</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- 2 PIPELINE -->
+<section id="pipeline"><div class="slide">
+  <div class="title"><h2>Data pipeline</h2><p>How the data moves · ETL</p></div>
+  <p class="lead-text">Python cleans and validates the data before loading, so only checked rows reach the warehouse. Rows that fail a check go to a rejects file with the reason.</p>
+  <div class="stairs">
+    <div class="step p1"><div class="txt"><b>Generate &amp; ingest</b><p>Synthetic CSV and Excel copied into the raw lake</p></div><div class="bar" style="--h:70px"><span class="n">01</span><span class="who">CD</span></div></div>
+    <div class="step p2"><div class="txt"><b>Validate &amp; clean</b><p>Dedupe IDs, fix labels, check dates and hours</p></div><div class="bar" style="--h:110px"><span class="n">02</span><span class="who">CD</span></div></div>
+    <div class="step p3"><div class="txt"><b>Transform</b><p>Dimension and fact rows, surrogate keys</p></div><div class="bar" style="--h:150px"><span class="n">03</span><span class="who">LV</span></div></div>
+    <div class="step p4"><div class="txt"><b>Load</b><p>PostgreSQL star schema, dimensions first</p></div><div class="bar" style="--h:190px"><span class="n">04</span><span class="who">LV</span></div></div>
+    <div class="step p5"><div class="txt"><b>Report</b><p>Headcount, departments, attendance, performance</p></div><div class="bar" style="--h:230px"><span class="n">05</span><span class="who">SV</span></div></div>
+  </div>
+  <div class="base"></div>
+  <div class="dag"><code>hr_employee_pipeline:&nbsp; ingest_raw <i>&gt;&gt;</i> validate_clean <i>&gt;&gt;</i> quality_checks <i>&gt;&gt;</i> transform <i>&gt;&gt;</i> load_dimensions <i>&gt;&gt;</i> load_facts <i>&gt;&gt;</i> refresh_report_views</code></div>
+  <div class="etl">
+    <div class="p1"><b>Extract</b>Read the source files from data/raw. Nothing in raw is ever edited.</div>
+    <div class="p3"><b>Transform</b>Clean, validate and shape rows in Python. Failed rows go to data/rejects.</div>
+    <div class="p5"><b>Load</b>Insert dimensions, then facts, into PostgreSQL. Each run can be repeated safely.</div>
+  </div>
+</div></section>
+
+<!-- 3 GUIDELINE -->
+<section id="guideline"><div class="slide">
+  <div class="title"><h2>Project guideline</h2><p>Eight required tasks from the brief</p></div>
+  <div class="g-top">
+    <div><h3>Objective</h3><p>Build an automated HR data pipeline that integrates employee datasets, improves data quality, stores structured data in a warehouse, and supports workforce reporting. HR needs consistent headcount, attendance, department and performance reports, with sensitive information protected.</p></div>
+    <div><h3>Ground rules</h3><ul>
+      <li>Synthetic or anonymised data only. No real employee records in the repo.</li>
+      <li>All code goes in through a pull request that another member reviews.</li>
+      <li>Never edit raw files. Cleaning writes new files.</li>
+      <li>Stuck for more than half a day? Tell the group chat.</li></ul></div>
+  </div>
+  <div class="diamonds">
+    <div class="dia p1"><div class="d"><span>1</span></div><b>Data collection</b><p>Employees, attendance and performance datasets</p><span class="who A">CD</span></div>
+    <div class="dia p2"><div class="d"><span>2</span></div><b>Data cleaning</b><p>Duplicate IDs, missing values, labels, dates, broken references</p><span class="who A">CD</span></div>
+    <div class="dia p3"><div class="d"><span>3</span></div><b>ETL / ELT</b><p>Repeatable pipeline; where transforms happen, how errors are handled</p><span><span class="who A">CD</span> <span class="who B">LV</span></span></div>
+    <div class="dia p4"><div class="d"><span>4</span></div><b>Data lake</b><p>Raw area with clear folder names and controlled access</p><span class="who A">CD</span></div>
+    <div class="dia p5"><div class="d"><span>5</span></div><b>Data warehouse</b><p>Star schema with attendance and performance facts</p><span class="who B">LV</span></div>
+    <div class="dia p6"><div class="d"><span>6</span></div><b>Apache Airflow</b><p>DAG with task dependencies and a successful run</p><span class="who B">LV</span></div>
+    <div class="dia p7"><div class="d"><span>7</span></div><b>Data governance</b><p>Access roles, quality rules, retention, definitions, privacy</p><span class="who C">SV</span></div>
+    <div class="dia p1"><div class="d"><span>8</span></div><b>Analytics output</b><p>Power BI: headcount, departments, attendance, performance</p><span class="who C">SV</span></div>
+  </div>
+  <div class="specs">
+    <div class="spec A"><h3>Data lake layout</h3><div class="body">
+<pre>data/
+├ raw/
+│ ├ employees/
+│ ├ attendance/
+│ └ performance/
+│   └ 2026-11-07/
+├ clean/
+└ rejects/</pre>
+      <ul><li><b>raw</b>: read-only sources</li><li><b>clean</b>: validated output</li><li><b>rejects</b>: failed rows + reason</li></ul></div></div>
+    <div class="spec B"><h3>Star schema</h3><div class="body"><ul>
+      <li><b>FactAttendance</b>: employee, date, status, hours</li>
+      <li><b>FactPerformance</b>: employee, date, score 1–5</li>
+      <li><b>DimEmployee</b>: ID, job title, department, hire date</li>
+      <li><b>DimDepartment</b>: name, division</li>
+      <li><b>DimDate</b>: day, month, quarter, year</li></ul></div></div>
+    <div class="spec C"><h3>Quality rules</h3><div class="body"><ul>
+      <li>Employee ID unique and not empty</li>
+      <li>Status: Present, Absent, Leave or Late</li>
+      <li>Hours worked 0 to 24</li>
+      <li>Valid dates, none in the future</li>
+      <li>Every row points to a known employee</li>
+      <li>Department in the reference list</li></ul></div></div>
+    <div class="spec ALL"><h3>Access &amp; privacy</h3><div class="body"><ul>
+      <li><b>hr_admin</b>: everything, raw lake</li>
+      <li><b>hr_analyst</b>: warehouse, read-only</li>
+      <li><b>report_viewer</b>: dashboard only</li>
+      <li>No names, phones or addresses in reports</li>
+      <li>Raw files 12 months, warehouse 5 years</li></ul></div></div>
+  </div>
+</div></section>
+
+<!-- 4 TIMELINE -->
+<section id="timeline"><div class="slide">
+  <div class="title"><h2>Project timeline</h2><p>3 – 18 November 2026 · six phases</p></div>
+  <div class="legend"><span class="A">Chea Dalin</span><span class="B">Lim Viboth</span><span class="C">Sun Vicheka</span><span class="ALL">Everyone</span><span class="ms">Checkpoint</span></div>
+  <div class="gantt-scroll"><div class="gantt" id="gantt"></div></div>
+</div></section>
+
+<!-- 5 PHASES -->
+<section id="phases"><div class="slide">
+  <div class="title"><h2>Phases &amp; tasks</h2><p>A phase is done when its exit check is true</p></div>
+  <div class="road" id="road"></div>
+  <div class="phases" id="phaseCards"></div>
+</div></section>
+
+<!-- 6 HANDOVER -->
+<section id="handover"><div class="slide">
+  <div class="title"><h2>Task handover</h2><p>What passes between members, and when</p></div>
+  <p class="lead-text">Every handover is a pull request, or a group-chat message with the files linked. The person receiving it confirms it works before the date.</p>
+  <div class="ho-scroll"><table class="ho">
+    <thead><tr><th>Date</th><th>From → To</th><th>Handed over</th><th>Needed for</th></tr></thead>
+    <tbody id="hoRows"></tbody>
+  </table></div>
+  <div class="members">
+    <div class="mcard A">
+      <div class="cap"><span>CD</span><h3>Chea Dalin · Data &amp; Quality</h3></div>
+      <div class="body">
+        <div><p class="k">Delivers</p><ul><li>generate_data.py and three datasets</li><li>data/raw lake folders</li><li>extract_clean.py as Airflow tasks</li><li>quality_checks.py and the rejects file</li><li>Profiling notes: issues found and fixed</li></ul></div>
+        <div class="io"><p><b>Receives</b>Running stack from Lim Viboth (5 Nov), schema from Lim Viboth (8 Nov)</p><p><b>Sends</b>Raw data and field list to Lim Viboth (7 Nov), clean code to Lim Viboth and check results to Sun Vicheka (10 Nov)</p></div>
+        <div><p class="k">Presents</p><ul><li>Data sources and lake layout</li><li>Before and after cleaning</li><li>Quality check results</li></ul></div>
+      </div>
+    </div>
+    <div class="mcard B">
+      <div class="cap"><span>LV</span><h3>Lim Viboth · Warehouse &amp; Airflow</h3></div>
+      <div class="body">
+        <div><p class="k">Delivers</p><ul><li>docker-compose.yml with Postgres and Airflow</li><li>sql/create_tables.sql</li><li>load_dimensions.py, load_facts.py</li><li>dags/hr_employee_pipeline.py</li><li>Screenshot of a green DAG run</li></ul></div>
+        <div class="io"><p><b>Receives</b>Field list from Chea Dalin (7 Nov), clean code from Chea Dalin (10 Nov)</p><p><b>Sends</b>Stack to everyone (5 Nov), schema to Chea Dalin and Sun Vicheka (8 Nov), loaded warehouse to Sun Vicheka (12 Nov)</p></div>
+        <div><p class="k">Presents</p><ul><li>Architecture and why ETL</li><li>Star schema diagram</li><li>Live DAG run in Airflow</li></ul></div>
+      </div>
+    </div>
+    <div class="mcard C">
+      <div class="cap"><span>SV</span><h3>Sun Vicheka · Analytics &amp; Documents</h3></div>
+      <div class="body">
+        <div><p class="k">Delivers</p><ul><li>GitHub repo, task board, README</li><li>docs/data_dictionary.md</li><li>docs/governance.md</li><li>Power BI file and screenshots</li><li>Final slide deck and video plan</li></ul></div>
+        <div class="io"><p><b>Receives</b>Check results from Chea Dalin (10 Nov), warehouse from Lim Viboth (12 Nov), screenshots from everyone (15 Nov)</p><p><b>Sends</b>Repo to everyone (4 Nov), slide deck (16 Nov), final package (18 Nov)</p></div>
+        <div><p class="k">Presents</p><ul><li>Introduction and team</li><li>Governance and privacy</li><li>Dashboard walkthrough and wrap-up</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 7 SUBMISSION -->
+<section id="submit"><div class="slide">
+  <div class="title"><h2>Submission</h2><p>Due Wednesday 18 November 2026 · Sun Vicheka submits</p></div>
+  <div class="hexes">
+    <div class="hex p1"><span class="n">01</span><b>Source code</b><p>GitHub repo with README, DAG, SQL, scripts and docs</p><div class="band">GitHub</div></div>
+    <div class="hex p3"><span class="n">02</span><b>Slides</b><p>One deck built by Sun Vicheka, one section per member</p><div class="band">Due 16 Nov</div></div>
+    <div class="hex p5"><span class="n">03</span><b>Video</b><p>15 to 20 minutes, with the live demo result</p><div class="band">Recorded 17 Nov</div></div>
+    <div class="hex p6"><span class="n">04</span><b>Group details</b><p>Group 2 and every member's name</p><div class="band">Submit 18 Nov</div></div>
+  </div>
+  <div class="video">
+    <div class="p7" style="flex:2">Intro · 2 min</div>
+    <div class="A" style="flex:5">Chea Dalin · 5 min</div>
+    <div class="B" style="flex:6">Lim Viboth · 6 min</div>
+    <div class="C" style="flex:5">Sun Vicheka · 5 min</div>
+    <div class="ALL" style="flex:2">Wrap · 2</div>
+  </div>
+</div></section>
+</main>
+<footer>Group 2 · Data Engineering Final Project · HR Employee Data Pipeline</footer>
+</div>
+</div>
+
+<script>
+(function () {
+  const START = new Date(2026, 10, 3), DAYS = 16, DUE = new Date(2026, 10, 18);
+  const WD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const col = (d) => d - 3 + 2;                     // November day -> grid column
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  const day = (d) => `${WD[new Date(2026, 10, d).getDay()]} ${d} Nov`;
+  const INIT = { A: 'CD', B: 'LV', C: 'SV', ALL: 'All' };
+  const tag = (o) => `<span class="who ${o}">${INIT[o]}</span>`;
+
+  // tasks: [owner, task, first day, last day]; ms: [day, checkpoint]
+  const PHASES = [
+    { name: 'Kick-off & setup', s: 3, e: 5, exit: 'Everyone can clone the repo and start the stack with docker compose up.', ms: [5, 'Stack running'], tasks: [
+      ['C', 'GitHub repo, task board, README', 3, 4],
+      ['B', 'Docker, PostgreSQL and Airflow', 3, 5],
+      ['A', 'Synthetic HR data generator', 3, 6] ] },
+    { name: 'Raw data & design', s: 6, e: 8, exit: 'Raw files are in the lake and the star schema tables exist.', ms: [8, 'Schema agreed'], tasks: [
+      ['A', 'Raw lake folders and source files', 6, 7],
+      ['A', 'Profile data quality issues', 7, 8],
+      ['B', 'Star schema and CREATE TABLE', 6, 8],
+      ['C', 'Data dictionary draft', 6, 8] ] },
+    { name: 'Clean, check & load', s: 8, e: 11, exit: 'Clean data loads into every table without errors.', tasks: [
+      ['A', 'Extract and clean code', 8, 10],
+      ['A', 'Data quality checks', 9, 11],
+      ['B', 'Load scripts: dimensions, then facts', 9, 11],
+      ['C', 'Governance document', 8, 11] ] },
+    { name: 'Orchestrate', s: 11, e: 13, exit: 'The DAG runs end to end with every task green.', ms: [13, 'First green DAG run'], tasks: [
+      ['B', 'Airflow DAG end to end', 11, 13],
+      ['A', 'Add cleaning and checks to the DAG', 11, 12],
+      ['C', 'Connect Power BI to the warehouse', 12, 13] ] },
+    { name: 'Analytics & review', s: 13, e: 15, exit: 'The dashboard shows all four required views and every pull request is merged.', ms: [15, 'Dashboard done'], tasks: [
+      ['C', 'Power BI dashboard', 13, 15],
+      ['ALL', 'Pull-request reviews and fixes', 13, 15] ] },
+    { name: 'Present & submit', s: 15, e: 18, exit: 'Repo, slides and video are submitted.', ms: [18, 'Submission'], tasks: [
+      ['C', 'Slide deck for every part', 15, 15],
+      ['ALL', 'Screenshots for your own part', 15, 15],
+      ['C', 'Final deck, plan the video', 16, 16],
+      ['ALL', 'Record the video', 17, 17],
+      ['C', 'Submit everything', 18, 18] ] },
+  ];
+  const HANDOVERS = [
+    [4, 'C', 'ALL', 'GitHub repo, branch rules and task board', 'Everyone working through pull requests'],
+    [5, 'B', 'ALL', 'Docker stack and connection details', 'Running code against Postgres and Airflow'],
+    [7, 'A', 'B', 'Raw files in the lake and a field list with types', 'Designing the star schema'],
+    [8, 'B', 'A', 'Star schema (create_tables.sql)', 'Shaping the clean output to fit the tables'],
+    [8, 'B', 'C', 'Table and column list', 'The data dictionary'],
+    [10, 'A', 'B', 'extract_clean.py and quality_checks.py', 'Adding them to the DAG'],
+    [10, 'A', 'C', 'Quality rules and the result of each check', 'The governance document'],
+    [12, 'B', 'C', 'Loaded warehouse, read-only login, DAG run screenshot', 'The Power BI dashboard'],
+    [14, 'C', 'ALL', 'Video running order and screenshot list', 'Capturing screenshots for your part'],
+    [15, 'ALL', 'C', 'Each member’s screenshots', 'The slide deck'],
+  ];
+  const NAME = { A: 'Chea Dalin', B: 'Lim Viboth', C: 'Sun Vicheka', ALL: 'Everyone' };
+
+  // Gantt
+  let g = '<div class="hd first" style="grid-column:1">Task</div>';
+  for (let i = 0; i < DAYS; i++) {
+    const d = new Date(2026, 10, 3 + i), we = d.getDay() % 6 === 0;
+    g += `<div class="hd${we ? ' we' : ''}" style="grid-column:${i + 2}"><b>${3 + i}</b>${WD[d.getDay()]}</div>`;
+  }
+  PHASES.forEach((p, n) => {
+    g += `<div class="ph p${n + 1}"><span>Phase ${n + 1} · ${esc(p.name)}</span><em>${p.s}–${p.e} Nov</em></div>`;
+    const rows = p.tasks.map((t) => ({ o: t[0], t: t[1], s: t[2], e: t[3] }));
+    if (p.ms) rows.push({ o: 'ALL', t: p.ms[1], s: p.ms[0], e: p.ms[0], ms: true });
+    rows.forEach((r) => {
+      g += `<div class="lbl">${r.ms ? '<span class="who" style="background:var(--navy)">◆</span>' : tag(r.o)}<span class="t" title="${esc(r.t)}">${esc(r.t)}</span></div>`;
+      g += `<div class="bar ${r.o}${r.ms ? ' ms' : ''}" style="grid-column:${col(r.s)} / ${col(r.e) + 1}" title="${esc(r.t)}: ${day(r.s)} – ${day(r.e)}"></div>`;
+    });
+  });
+  const gantt = document.getElementById('gantt');
+  gantt.innerHTML = g;
+  let placeToday = () => {};
+  const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const idx = Math.round((today - START) / 864e5);
+  if (idx >= 0 && idx < DAYS) {
+    const head = gantt.querySelectorAll('.hd')[idx + 1], line = document.createElement('div');
+    line.className = 'today'; gantt.appendChild(line);
+    placeToday = () => { line.style.left = (head.offsetLeft + head.offsetWidth / 2) + 'px'; };
+    addEventListener('resize', placeToday);
+  }
+
+  // days left
+  const left = Math.round((DUE - today) / 864e5);
+  document.getElementById('daysLeft').textContent = left > 0 ? left : left === 0 ? 'Today' : 'Done';
+  document.getElementById('leftLabel').textContent = left > 1 ? 'days left' : left === 1 ? 'day left' : left === 0 ? 'deadline' : 'submitted';
+
+  // phase pins + cards
+  document.getElementById('road').innerHTML = PHASES.map((p, n) =>
+    `<div class="pin p${n + 1}"><div class="head"><span>${n + 1}</span></div><div class="stem"></div><div class="dot"></div><b>${esc(p.name)}</b><small>${p.s}–${p.e} Nov</small></div>`).join('');
+  document.getElementById('phaseCards').innerHTML = PHASES.map((p, n) => `
+    <article class="phase p${n + 1}">
+      <div class="cap"><h3>Phase ${n + 1} · ${esc(p.name)}</h3><small>${p.s}–${p.e} Nov</small></div>
+      <ul>${p.tasks.map((t) => `<li>${tag(t[0])}<span>${esc(t[1])}</span></li>`).join('')}</ul>
+      <p class="exit"><b>Exit check</b>${esc(p.exit)}</p>
+    </article>`).join('');
+
+  // handovers
+  document.getElementById('hoRows').innerHTML = HANDOVERS.map((h) => `
+    <tr><td class="when">${day(h[0])}</td>
+    <td class="flow">${tag(h[1])} ${NAME[h[1]]}<span class="arrow">→</span>${tag(h[2])} ${NAME[h[2]]}</td>
+    <td>${esc(h[3])}</td><td>${esc(h[4])}</td></tr>`).join('');
+
+  // one page at a time: the sidebar link (or #hash) picks the section shown
+  const pages = [...document.querySelectorAll('main > section')];
+  const links = [...document.querySelectorAll('#sideNav a')];
+  const titleOf = (s) => links.find((a) => a.hash === '#' + s.id).textContent.replace(/^\d+/, '');
+  pages.forEach((s, i) => {
+    const prev = pages[i - 1], next = pages[i + 1];
+    const pager = document.createElement('div'); pager.className = 'pager';
+    pager.innerHTML = (prev ? `<a href="#${prev.id}">← ${esc(titleOf(prev))}</a>` : '') +
+                      (next ? `<a class="next" href="#${next.id}">${esc(titleOf(next))} →</a>` : '');
+    s.querySelector('.slide').appendChild(pager);
+  });
+  const show = () => {
+    const page = pages.find((s) => '#' + s.id === location.hash) || pages[0];
+    pages.forEach((s) => { s.hidden = s !== page; });
+    links.forEach((a) => { if (a.hash === '#' + page.id) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+    window.scrollTo(0, 0);
+    if (page.id === 'timeline') placeToday();
+  };
+  addEventListener('hashchange', show);
+  show();
+})();
+</script>
+</body>
+</html>

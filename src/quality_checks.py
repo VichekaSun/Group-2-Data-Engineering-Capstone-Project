@@ -1,5 +1,5 @@
 """
-Quality checks for the HR pipeline (Member A).
+Quality checks for the HR pipeline (Chea Dalin).
 
 Reads the clean files made by extract_clean.py and checks them against the
 data quality rules. Prints a PASS / FAIL / WARN line for each rule and saves

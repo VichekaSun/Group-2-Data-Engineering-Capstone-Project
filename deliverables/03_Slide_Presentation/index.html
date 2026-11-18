@@ -342,7 +342,7 @@
       <p class="note" style="margin-top:12px">Defaults apply only when a variable is missing; real values come from <code>.env</code>. Governance proposes a dedicated loader role instead of <code>SYSADMIN</code>.</p>
     </div>
   </div>
-  <div class="src">Source: <code>.env.example</code>, <code>dag/hr_pipeline.py</code> (simplified), <code>docs/governance.md</code> section 4.</div>
+  <div class="src">Source: <code>.env.example</code>, <code>dag/hr_pipeline.py</code> (simplified), <code>deliverables/01_Documentation/governance.md</code> section 4.</div>
 </section>
 
 <!-- 22 -->
@@ -427,7 +427,7 @@
     </div>
     <figure class="slot shotbox" data-slot="lv-fact-counts" data-src="assets/shots/lv-fact-counts.png" style="height:470px"><img alt="Snowflake worksheet: SELECT COUNT(*) FROM FACT_ATTENDANCE returns 12917"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake worksheet: SELECT COUNT(*) FROM FACT_ATTENDANCE returns 12917</span><i>save as assets/shots/lv-fact-counts.png, or click to insert</i></figcaption></figure>
   </div>
-  <div class="src">Source: <code>sql/create_star_schema.sql</code>, <code>docs/data_dictionary.md</code>; rows from <code>data/clean/</code>; order from the README plan (load_dimensions, then load_facts).</div>
+  <div class="src">Source: <code>sql/create_star_schema.sql</code>, <code>deliverables/01_Documentation/data_dictionary.md</code>; rows from <code>data/clean/</code>; order from the README plan (load_dimensions, then load_facts).</div>
 </section>
 
 <!-- 26 -->
@@ -563,7 +563,7 @@
 <!-- 17 -->
 <section class="slide" data-label="Governance">
   <header class="shead"><span class="kicker">03 · Methodology</span><h2>Governance and privacy</h2><span class="speaker">Sun Vicheka</span></header>
-  <p class="lead" style="font-size:17px">In <code>docs/governance.md</code> every policy line carries a tag: <span class="tag enf">Enforced</span> the code or config does it, <span class="tag agr">Agreed</span> in the roadmap, <span class="tag pro">Proposed</span> still needs team agreement.</p>
+  <p class="lead" style="font-size:17px">In <code>deliverables/01_Documentation/governance.md</code> every policy line carries a tag: <span class="tag enf">Enforced</span> the code or config does it, <span class="tag agr">Agreed</span> in the roadmap, <span class="tag pro">Proposed</span> still needs team agreement.</p>
   <div class="cards c3">
     <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg><span class="k">Ownership</span><h3>Clear owners</h3><p>Each data asset has an owner: data and quality (Chea Dalin), warehouse and infrastructure (Lim Viboth), reports and documents (Sun Vicheka).</p></div>
     <div class="card acc"><svg class="ico" aria-hidden="true"><use href="#i-cycle"/></svg><span class="k">Lineage</span><h3>Traceable path</h3><p>source → raw → clean / rejects / logs → quality report → ANALYTICS → Power BI.</p></div>
@@ -572,7 +572,7 @@
     <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-table"/></svg><span class="k">Definitions</span><h3>One meaning per KPI</h3><p>Headcount, attendance rate and approved performance are defined once in the README and governance doc.</p></div>
     <div class="card"><svg class="ico" aria-hidden="true"><use href="#i-branch"/></svg><span class="k">Change</span><h3>Pull requests</h3><p>Branch, open a pull request, get a review, merge. Docs change in the same PR as the code.</p></div>
   </div>
-  <div class="src">Source: <code>docs/governance.md</code>, <code>docs/data_dictionary.md</code>.</div>
+  <div class="src">Source: <code>deliverables/01_Documentation/governance.md</code>, <code>deliverables/01_Documentation/data_dictionary.md</code>.</div>
 </section>
 
 <!-- 27 -->
@@ -590,7 +590,7 @@
     <div class="card"><span class="step-n">3</span><h3>Attendance trends</h3><p>Rate by month and department</p></div>
     <div class="card"><span class="step-n">4</span><h3>Approved performance</h3><p>Scores by period and department</p></div>
   </div>
-  <div class="src">Source: <code>README.md</code> (Dashboard), <code>docs/governance.md</code> section 7.</div>
+  <div class="src">Source: <code>README.md</code> (Dashboard), <code>deliverables/01_Documentation/governance.md</code> section 7.</div>
 </section>
 
 <!-- 30 -->
@@ -637,7 +637,7 @@
       </table>
     </div>
   </div>
-  <div class="src">Source: <code>docs/governance.md</code> (Open decisions, section 3d), <code>README.md</code> (Warehouse).</div>
+  <div class="src">Source: <code>deliverables/01_Documentation/governance.md</code> (Open decisions, section 3d), <code>README.md</code> (Warehouse).</div>
 </section>
 
 <!-- 32 -->

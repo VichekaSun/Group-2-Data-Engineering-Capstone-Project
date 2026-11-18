@@ -1,5 +1,5 @@
 """
-HR pipeline DAG - extract and clean step (Member A).
+HR pipeline DAG - extract and clean step (Chea Dalin).
 
 ingest_to_raw  ->  clean_employees   \
                    clean_attendance   >  quality_checks  ->  (load is added later)
