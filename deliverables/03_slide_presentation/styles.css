@@ -435,9 +435,9 @@ body.present .swap > .slot.shot:not(.filled) { display: none; }
 
 /* cartoon portraits: default picture in each photo circle; a real photo (click) still covers it */
 .slot.photo[data-slot] { background-size: cover !important; background-position: center !important; border-style: solid; }
-.slot.photo[data-slot="photo-dalin"] { background-image: url("assets/avatars/chea-dalin.svg") !important; }
-.slot.photo[data-slot="photo-viboth"] { background-image: url("assets/avatars/lim-viboth.svg") !important; }
-.slot.photo[data-slot="photo-vicheka"] { background-image: url("assets/avatars/sun-vicheka.svg") !important; }
+.slot.photo[data-slot="photo-dalin"] { background-image: url("assets/avatars/chea_dalin.svg") !important; }
+.slot.photo[data-slot="photo-viboth"] { background-image: url("assets/avatars/lim_viboth.svg") !important; }
+.slot.photo[data-slot="photo-vicheka"] { background-image: url("assets/avatars/sun_vicheka.svg") !important; }
 .slot.photo[data-slot] figcaption { visibility: hidden; }
 .slot.photo.big { box-shadow: 0 0 0 6px var(--tint), 0 12px 30px rgba(31,78,121,.15); border: 0; }
 .cover-meta { font-size: 15.5px; }

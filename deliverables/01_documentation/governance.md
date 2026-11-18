@@ -5,7 +5,7 @@ Status: draft, 9 Nov 2026.
 Every policy line carries a tag:
 
 - **Enforced**: the code or the configuration already does this.
-- **Agreed**: the team agreed to it in the project roadmap ([HR_Pipeline_Roadmap.html](../02_Roadmap_and_Timeline/HR_Pipeline_Roadmap.html)), but nothing enforces it yet.
+- **Agreed**: the team agreed to it in the project roadmap ([hr_pipeline_roadmap.html](../02_roadmap_and_timeline/hr_pipeline_roadmap.html)), but nothing enforces it yet.
 - **Proposed**: the team must agree to it before it applies.
 
 ## 1. Ownership, **Agreed**
@@ -18,7 +18,7 @@ Every policy line carries a tag:
 | Warehouse schema, load code, `docker-compose.yml` | Lim Viboth | The `ANALYTICS` star schema and the infrastructure |
 | Airflow DAG | Chea Dalin (extract, clean, checks), Lim Viboth (load tasks) | Runs the pipeline |
 | Report views, Power BI | Sun Vicheka | The dashboard and its measures |
-| `deliverables/01_Documentation/governance.md`, `deliverables/01_Documentation/data_dictionary.md` | Sun Vicheka | Keeping the documents in line with the code |
+| `deliverables/01_documentation/governance.md`, `deliverables/01_documentation/data_dictionary.md` | Sun Vicheka | Keeping the documents in line with the code |
 
 ## 2. Data lineage
 
@@ -137,7 +137,7 @@ These come from the README's dashboard section.
 ## 8. Change management and incidents
 
 - Branch from `dev`, open a PR into `dev`, get a review from another member, and merge. Merge `dev` into `main` by PR. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
-- A schema change, a new rule or a change to the reference data must update `deliverables/01_Documentation/data_dictionary.md` and this document in the same PR. **Proposed**
+- A schema change, a new rule or a change to the reference data must update `deliverables/01_documentation/data_dictionary.md` and this document in the same PR. **Proposed**
 - A FAIL in Airflow is fixed by the owner of that dataset on the same day. **Proposed**
 - Anyone stuck for more than half a day tells the group chat. **Proposed** (team convention in the README; no branch protection or other setting enforces it).
 
