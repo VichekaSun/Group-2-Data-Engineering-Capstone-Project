@@ -310,7 +310,7 @@
 <!-- 20 -->
 <section class="slide" data-label="Docker Compose setup">
   <header class="shead"><span class="kicker">02 · Warehouse</span><h2>Local platform with Docker Compose</h2><span class="speaker">Lim Viboth</span></header>
-  <figure class="slot shotbox" data-slot="lv-docker-running" data-src="assets/shots/lv-docker-running.png" style="height:330px"><img alt="Real screenshot: Docker Desktop, or the terminal after docker compose ps, with the mysql and airflow containers running"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Docker Desktop, or the terminal after docker compose ps, with the mysql and airflow containers running</span><i>save as assets/shots/lv-docker-running.png, or click to insert</i></figcaption></figure>
+  <figure class="slot shotbox" data-slot="lv-docker-running" data-src="assets/shots/lv-docker-running.png" style="height:330px"><img alt="Docker Desktop: the airflow Compose stack running with airflow-worker, triggerer, webserver, scheduler, redis and postgres"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Docker Desktop: the airflow Compose stack running (worker, triggerer, webserver, scheduler, redis, postgres)</span><i>save as assets/shots/lv-docker-running.png, or click to insert</i></figcaption></figure>
   <div class="cards c4" style="margin-top:20px">
     <div class="card"><span class="step-n">1</span><p><code>cp .env.example .env</code> and fill in the values</p></div>
     <div class="card"><span class="step-n">2</span><p><code>docker compose up -d</code></p></div>
@@ -337,8 +337,8 @@
       </div>
     </div>
     <div>
-      <div class="blk-h">The Snowflake side</div>
-<figure class="slot shotbox" data-slot="lv-snowflake-connection" data-src="assets/shots/lv-snowflake-connection.png" style="height:270px"><img alt="Real screenshot: Snowflake: database HR_DB, schema ANALYTICS, warehouse COMPUTE_WH (hide passwords and the account URL)"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake: database HR_DB, schema ANALYTICS, warehouse COMPUTE_WH (hide passwords and the account URL)</span><i>save as assets/shots/lv-snowflake-connection.png, or click to insert</i></figcaption></figure>
+      <div class="blk-h">The Snowflake variables</div>
+<figure class="slot shotbox" data-slot="lv-snowflake-connection" data-src="assets/shots/lv-snowflake-connection.png" style="height:270px"><img alt=".env template with the six SNOWFLAKE_ variables: account, user, password, warehouse, database and role"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>.env template with the six SNOWFLAKE_ variables: account, user, password, warehouse, database, role</span><i>save as assets/shots/lv-snowflake-connection.png, or click to insert</i></figcaption></figure>
       <p class="note" style="margin-top:12px">Defaults apply only when a variable is missing; real values come from <code>.env</code>. Governance proposes a dedicated loader role instead of <code>SYSADMIN</code>.</p>
     </div>
   </div>
@@ -397,9 +397,9 @@
       <text x="950" y="261" fill="#44576d">year, half</text>
     </g>
   </svg>
-    <figure class="slot shotbox" data-slot="lv-snowflake-schema" data-src="assets/shots/lv-snowflake-schema.png" style="height:440px"><img alt="Real screenshot: Snowflake: the HR_DB.ANALYTICS tables in the object browser, or an ER diagram"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake: the HR_DB.ANALYTICS tables in the object browser, or an ER diagram</span><i>save as assets/shots/lv-snowflake-schema.png, or click to insert</i></figcaption></figure>
+    <figure class="slot shotbox" data-slot="lv-snowflake-schema" data-src="assets/shots/lv-snowflake-schema.png" style="height:440px"><img alt="Snowflake object browser: HR_DB.ANALYTICS with 9 tables, the DIM_ and FACT_ star-schema tables plus STG_ staging tables"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake object browser: the 9 tables in HR_DB.ANALYTICS</span><i>save as assets/shots/lv-snowflake-schema.png, or click to insert</i></figcaption></figure>
   </div>
-  <div class="src">Source: <code>sql/create_star_schema.sql</code>. No personal columns are defined, so reports go no deeper than <code>employee_id</code>.</div>
+  <div class="src">Source: <code>sql/create_star_schema.sql</code>; Snowflake object browser. <code>HR_DB.ANALYTICS</code> holds 9 tables: the 6 star-schema tables above plus <code>STG_*</code> staging tables. No personal columns are defined, so reports go no deeper than <code>employee_id</code>.</div>
 </section>
 
 <!-- 24 -->
@@ -425,7 +425,7 @@
     </table>
       <p class="loadorder"><b>Load order:</b> seed lookups → <code>dim_date</code>, <code>dim_employee</code> → facts → Power BI. Dimensions first, so every foreign key resolves.</p>
     </div>
-    <figure class="slot shotbox" data-slot="lv-fact-counts" data-src="assets/shots/lv-fact-counts.png" style="height:470px"><img alt="Real screenshot: Snowflake worksheet: SELECT COUNT(*) on fact_attendance (12,917) and fact_performance (372)"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake worksheet: SELECT COUNT(*) on fact_attendance (12,917) and fact_performance (372)</span><i>save as assets/shots/lv-fact-counts.png, or click to insert</i></figcaption></figure>
+    <figure class="slot shotbox" data-slot="lv-fact-counts" data-src="assets/shots/lv-fact-counts.png" style="height:470px"><img alt="Snowflake worksheet: SELECT COUNT(*) FROM FACT_ATTENDANCE returns 12917"><figcaption><svg class="ico" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Real screenshot</b><span>Snowflake worksheet: SELECT COUNT(*) FROM FACT_ATTENDANCE returns 12917</span><i>save as assets/shots/lv-fact-counts.png, or click to insert</i></figcaption></figure>
   </div>
   <div class="src">Source: <code>sql/create_star_schema.sql</code>, <code>docs/data_dictionary.md</code>; rows from <code>data/clean/</code>; order from the README plan (load_dimensions, then load_facts).</div>
 </section>
